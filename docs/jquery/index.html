@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad()
+    </script>
+    <style>
+      body {
+        background-color: #f1f3f5;
+        color: #345;
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen,
+          ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+      }
+
+      .hljs {
+        background-color: #ffffff;
+      }
+
+      .container {
+        width: 60vw;
+        margin: 0 auto;
+      }
+
+      header {
+        height: 10vh;
+        line-height: 10vh;
+      }
+
+      header a {
+        text-decoration: none;
+        padding: 0.3vw 0.5vw;
+        border: 1px #89a solid;
+        border-radius: 0.2vw;
+        color: #89a;
+      }
+
+      header a:hover {
+        background-color: #ffffff;
+        border-color: #345;
+        color: #345;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        color: #745fb5;
+        white-space: nowrap;
+      }
+
+      h3::after {
+        margin-left: 24px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          rgba(116, 95, 181, 0.2),
+          transparent 80%
+        );
+      }
+
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1vh;
+      }
+
+      .item {
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <a href="javascript:history.back()">Go Back</a>
+      </header>
+
+      <h1>jQuery</h1>
+      <p><a href="https://jquery.com/">官网</a></p>
+      <h1 id="ajax-请求">ajax 请求</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="通用">通用</h3>
+          <p>see <a href="https://learn.jquery.com/ajax/">doc</a></p>
+          <pre><code class="hljs language-js">$.<span class="hljs-title function_">ajax</span>({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/xxx&#x27;</span>,
+  <span class="hljs-attr">data</span>: { ...data },
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+  <span class="hljs-attr">contentType</span>: <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>,
+  <span class="hljs-attr">cache</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">timeout</span>: <span class="hljs-number">1000</span> * <span class="hljs-number">1</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) {},
+  <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) {},
+})
+</code></pre>
+        </div>
+      </div>
+      <h1 id="插件">插件</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="基本写法">基本写法</h3>
+          <p>
+            see
+            <a href="https://learn.jquery.com/plugins/basic-plugin-creation/"
+              >doc</a
+            >
+          </p>
+          <pre><code class="hljs language-js">;(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) {
+  $.fn.<span class="hljs-property">pluginname</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) {
+    <span class="hljs-keyword">var</span> opts = $.<span class="hljs-title function_">extend</span>({}, $.fn.<span class="hljs-property">pluginname</span>.<span class="hljs-property">defaults</span>, options)
+    <span class="hljs-comment">// do something</span>
+  }
+  $.fn.<span class="hljs-property">pluginname</span>.<span class="hljs-property">defaults</span> = {}
+})(jQuery)
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
