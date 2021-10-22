@@ -109,13 +109,13 @@
         <div class="item">
           <h3 id="普通">普通</h3>
           <pre><code class="hljs language-js">laydate.<span class="hljs-title function_">render</span>({
-    <span class="hljs-attr">elem</span>: <span class="hljs-string">&#x27;#signAt&#x27;</span>,
-    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;datetime&#x27;</span>,
-    <span class="hljs-attr">theme</span>: <span class="hljs-string">&#x27;#4996ed&#x27;</span>,
-    <span class="hljs-attr">format</span>: <span class="hljs-string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>,
-    <span class="hljs-attr">done</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-comment">// do somethins</span>
-    }
+  <span class="hljs-attr">elem</span>: <span class="hljs-string">&#x27;#signAt&#x27;</span>,
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;datetime&#x27;</span>,
+  <span class="hljs-attr">theme</span>: <span class="hljs-string">&#x27;#4996ed&#x27;</span>,
+  <span class="hljs-attr">format</span>: <span class="hljs-string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>,
+  <span class="hljs-attr">done</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// do somethins</span>
+  },
 })
 </code></pre>
         </div>
@@ -123,29 +123,29 @@
           <h3 id="区间">区间</h3>
           <pre><code class="hljs language-js"><span class="hljs-comment">// 单dom</span>
 laydate.<span class="hljs-title function_">render</span>({
-    <span class="hljs-attr">elem</span>: <span class="hljs-string">&#x27;#signAt&#x27;</span>,
-    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;datetime&#x27;</span>,
-    <span class="hljs-attr">theme</span>: <span class="hljs-string">&#x27;#4996ed&#x27;</span>,
-    <span class="hljs-attr">range</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">//或 range: &#x27;~&#x27; 来自定义分割字符</span>
-    <span class="hljs-attr">format</span>: <span class="hljs-string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>,
-    <span class="hljs-attr">done</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-comment">// do somethins</span>
-    }
+  <span class="hljs-attr">elem</span>: <span class="hljs-string">&#x27;#signAt&#x27;</span>,
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;datetime&#x27;</span>,
+  <span class="hljs-attr">theme</span>: <span class="hljs-string">&#x27;#4996ed&#x27;</span>,
+  <span class="hljs-attr">range</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">//或 range: &#x27;~&#x27; 来自定义分割字符</span>
+  <span class="hljs-attr">format</span>: <span class="hljs-string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>,
+  <span class="hljs-attr">done</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// do somethins</span>
+  },
 })
 
 <span class="hljs-comment">// 双dom</span>
-laydate.<span class="hljs-title function_">render</span>({ 
-  <span class="hljs-attr">elem</span>: <span class="hljs-string">&#x27;#test-range&#x27;</span> <span class="hljs-comment">//开始时间和结束时间所在 input 框的父选择器</span>
+laydate.<span class="hljs-title function_">render</span>({
+  <span class="hljs-attr">elem</span>: <span class="hljs-string">&#x27;#test-range&#x27;</span>, <span class="hljs-comment">//开始时间和结束时间所在 input 框的父选择器</span>
   <span class="hljs-comment">//设置开始日期、日期日期的 input 选择器</span>
-  ,<span class="hljs-attr">range</span>: [<span class="hljs-string">&#x27;#startDate&#x27;</span>, <span class="hljs-string">&#x27;#endDate&#x27;</span>] <span class="hljs-comment">//数组格式为 layui 2.6.6 开始新增</span>
-});
+  <span class="hljs-attr">range</span>: [<span class="hljs-string">&#x27;#startDate&#x27;</span>, <span class="hljs-string">&#x27;#endDate&#x27;</span>], <span class="hljs-comment">//数组格式为 layui 2.6.6 开始新增</span>
+})
 </code></pre>
         </div>
       </div>
       <h1 id="弹出层">弹出层</h1>
       <div class="box">
         <div class="item">
-          <h3 id=""></h3>
+          <h3 id="普通-1">普通</h3>
           <pre><code>// 基础
 layer.msg(&#x27;hello&#x27;);
 
