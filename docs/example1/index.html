@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>example1 example1</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad()
+    </script>
+    <style>
+      body {
+        background-color: #f1f3f5;
+        color: #345;
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen,
+          ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+      }
+
+      .hljs {
+        background-color: #ffffff;
+      }
+
+      .container {
+        width: 60vw;
+        margin: 0 auto;
+      }
+
+      header {
+        height: 10vh;
+        line-height: 10vh;
+      }
+
+      header a {
+        text-decoration: none;
+        padding: 0.3vw 0.5vw;
+        border: 1px #89a solid;
+        border-radius: 0.2vw;
+        color: #89a;
+      }
+
+      header a:hover {
+        background-color: #ffffff;
+        border-color: #345;
+        color: #345;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        color: #745fb5;
+        white-space: nowrap;
+      }
+
+      h3::after {
+        margin-left: 24px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          rgba(116, 95, 181, 0.2),
+          transparent 80%
+        );
+      }
+
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1vh;
+      }
+
+      .item {
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <a href="/">Go Back</a>
+      </header>
+
+      <h1>example1 example1</h1>
+      <p>
+        See MDN Web Doc
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+          >JavaScript</a
+        >
+      </p>
+
+      <h1 id="array">Array</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="array-1">array</h3>
+          <p>The Array() constructor is used to create Array objects.</p>
+          <pre><code class="hljs language-js"><span class="hljs-comment">// literal constructor</span>
+[element0, element1, ..., elementN]
+
+<span class="hljs-comment">// construct from elements</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(element0, element1, ..., elementN)
+
+<span class="hljs-comment">// construct from array length</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(arrayLength)
+</code></pre>
+        </div>
+      </div>
+      <h1 id="bigint">BigInt</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="asintn">asIntN</h3>
+          <p>
+            The BigInt.asIntN static method clamps a BigInt value to a signed
+            integer value, and returns that value.
+          </p>
+          <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> max = <span class="hljs-number">2n</span> ** (<span class="hljs-number">64n</span> - <span class="hljs-number">1n</span>) - <span class="hljs-number">1n</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">check64bit</span>(<span class="hljs-params">number</span>) {
+  (number &gt; max) ?
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Number doesn\&#x27;t fit in signed 64-bit integer!&#x27;</span>) :
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">BigInt</span>.<span class="hljs-title function_">asIntN</span>(<span class="hljs-number">64</span>, number));
+}
+
+<span class="hljs-title function_">check64bit</span>(<span class="hljs-number">2n</span> ** <span class="hljs-number">64n</span>);
+<span class="hljs-comment">// expected output: &quot;Number doesn&#x27;t fit in signed 64-bit integer!&quot;</span>
+
+<span class="hljs-title function_">check64bit</span>(<span class="hljs-number">2n</span> ** <span class="hljs-number">32n</span>);
+<span class="hljs-comment">// expected output: 4294967296n</span>
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="asuintn">asUintN</h3>
+          <p>
+            The BigInt.asUintN static method clamps a BigInt value to an
+            unsigned integer value, and returns that value.
+          </p>
+          <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> max = <span class="hljs-number">2n</span> ** <span class="hljs-number">64n</span> - <span class="hljs-number">1n</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">check64bit</span>(<span class="hljs-params">number</span>) {
+  (number &gt; max) ?
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Number doesn\&#x27;t fit in unsigned 64-bit integer!&#x27;</span>) :
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">BigInt</span>.<span class="hljs-title function_">asUintN</span>(<span class="hljs-number">64</span>, number));
+}
+
+<span class="hljs-title function_">check64bit</span>(<span class="hljs-number">2n</span> ** <span class="hljs-number">64n</span>);
+<span class="hljs-comment">// expected output: &quot;Number doesn&#x27;t fit in unsigned 64-bit integer!&quot;</span>
+
+<span class="hljs-title function_">check64bit</span>(<span class="hljs-number">2n</span> ** <span class="hljs-number">32n</span>);
+<span class="hljs-comment">// expected output: 4294967296n</span>
+
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
