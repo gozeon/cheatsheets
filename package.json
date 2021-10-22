@@ -7,6 +7,7 @@
   "author": "goze",
   "license": "MIT",
   "dependencies": {
+    "del": "^6.0.0",
     "ejs": "^3.1.6",
     "fast-glob": "^3.2.7",
     "front-matter": "^4.0.2",

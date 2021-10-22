@@ -2,20 +2,23 @@ const fg = require('fast-glob')
 const path = require('path')
 const fs = require('fs-extra')
 const ejs = require('ejs')
+const del = require('del')
 const _ = require('lodash')
 const { marked } = require('./marked')
 const { parser, genHtml } = require('./parse')
 const { metaData } = require('./meta')
 
-const mdFolder = path.join(__dirname, '..', 'doc')
+const mdFolder = path.join(__dirname, '..', 'md')
 const indexTmpFile = path.join(__dirname, '..', 'template/index.html')
 const docTmpFile = path.join(__dirname, '..', 'template/doc.html')
-const hhtmlFolder = path.join(__dirname, '..', 'docs')
+const htmlFolder = path.join(__dirname, '..', 'docs')
 
 fg('*.md', {
   cwd: mdFolder,
   absolute: true,
 }).then(async (files) => {
+  // clean
+  // await del(htmlFolder)
   // render Doc
   const promises = files.map(async (file) => {
     const { attributes, body } = await metaData(file)
@@ -26,9 +29,9 @@ fg('*.md', {
     }
     const htmlScope = path.parse(file).name
 
-    ejs.renderFile(docTmpFile, pageData, { cache: true }, function (err, str) {
+    ejs.renderFile(docTmpFile, pageData, { cache: false }, function (err, str) {
       fs.outputFileSync(
-        path.join(hhtmlFolder, htmlScope, 'index.html'),
+        path.join(htmlFolder, htmlScope, 'index.html'),
         str,
         'utf-8'
       )
@@ -75,9 +78,9 @@ fg('*.md', {
   ejs.renderFile(
     indexTmpFile,
     { document },
-    { cache: true },
+    { cache: false },
     function (err, str) {
-      fs.outputFileSync(path.join(hhtmlFolder, 'index.html'), str, 'utf-8')
+      fs.outputFileSync(path.join(htmlFolder, 'index.html'), str, 'utf-8')
     }
   )
 })

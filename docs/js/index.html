@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <title>javascript</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -98,8 +98,70 @@
         <a href="javascript:history.back()">Go Back</a>
       </header>
 
-      <h1><%- title %></h1>
-      <%- intro %> <%- document %>
+      <h1>javascript</h1>
+      <p>
+        See MDN Web Docs
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+          >JavaScript</a
+        >
+      </p>
+      <h1 id="boolean">Boolean</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="boolean-1">boolean</h3>
+          <p>The Boolean object is an object wrapper for a boolean value.</p>
+          <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> x = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Boolean</span>(<span class="hljs-literal">false</span>);
+<span class="hljs-keyword">if</span> (x) {
+  <span class="hljs-comment">// this code is executed</span>
+}
+</code></pre>
+        </div>
+      </div>
+      <h1 id="array">Array</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="asintn">asIntN</h3>
+          <p>
+            The BigInt.asIntN static method clamps a BigInt value to a signed
+            integer value, and returns that value.
+          </p>
+          <pre><code>const max = 2n ** (64n - 1n) - 1n;
+
+function check64bit(number) {
+  (number &gt; max) ?
+    console.log(&#x27;Number doesn\&#x27;t fit in signed 64-bit integer!&#x27;) :
+    console.log(BigInt.asIntN(64, number));
+}
+
+check64bit(2n ** 64n);
+// expected output: &quot;Number doesn&#x27;t fit in signed 64-bit integer!&quot;
+
+check64bit(2n ** 32n);
+// expected output: 4294967296n
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="asuintn">asUintN</h3>
+          <p>
+            The BigInt.asUintN static method clamps a BigInt value to an
+            unsigned integer value, and returns that value.
+          </p>
+          <pre><code>const max = 2n ** 64n - 1n;
+
+function check64bit(number) {
+  (number &gt; max) ?
+    console.log(&#x27;Number doesn\&#x27;t fit in unsigned 64-bit integer!&#x27;) :
+    console.log(BigInt.asUintN(64, number));
+}
+
+check64bit(2n ** 64n);
+// expected output: &quot;Number doesn&#x27;t fit in unsigned 64-bit integer!&quot;
+
+check64bit(2n ** 32n);
+// expected output: 4294967296n
+</code></pre>
+        </div>
+      </div>
     </div>
   </body>
 </html>
