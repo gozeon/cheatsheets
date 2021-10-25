@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pm2</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad()
+    </script>
+    <style>
+      body {
+        background-color: #f1f3f5;
+        color: #345;
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen,
+          ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+      }
+
+      .hljs {
+        background-color: #ffffff;
+      }
+
+      .container {
+        width: 60vw;
+        margin: 0 auto;
+      }
+
+      header {
+        height: 10vh;
+        line-height: 10vh;
+      }
+
+      header a {
+        text-decoration: none;
+        padding: 0.3vw 0.5vw;
+        border: 1px #89a solid;
+        border-radius: 0.2vw;
+        color: #89a;
+      }
+
+      header a:hover {
+        background-color: #ffffff;
+        border-color: #345;
+        color: #345;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        color: #745fb5;
+        white-space: nowrap;
+      }
+
+      h3::after {
+        margin-left: 24px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          rgba(116, 95, 181, 0.2),
+          transparent 80%
+        );
+      }
+
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1vh;
+      }
+
+      .item {
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <a href="javascript:history.back()">Go Back</a>
+      </header>
+
+      <h1>pm2</h1>
+      <p>See <a href="https://pm2.keymetrics.io/">Docs</a></p>
+      <h1 id="常用命令">常用命令</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="基本使用">基本使用</h3>
+          <pre><code class="hljs language-npm">pm2 status # 查看所有进程
+pm2 log # 查看日志
+pm2 show &lt;name/id&gt; # 查看进程详情
+pm2 reload &lt;name/id&gt; # 平滑重启进程，
+pm2 restart &lt;name/id&gt; --update-env # 重启进程并重新载入环境变量
+pm2 ecosystem init # 初始化配置文件
+</code></pre>
+        </div>
+      </div>
+      <h1 id="常用配置文件">常用配置文件</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="django举例"><code>django</code>举例</h3>
+          <p><code>ecosystem.config.js</code></p>
+          <pre><code class="hljs language-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">apps</span>: [
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;django&#x27;</span>,
+      <span class="hljs-attr">cwd</span>: <span class="hljs-string">&#x27;/Users/goze/python/ac&#x27;</span>,
+      <span class="hljs-attr">args</span>: <span class="hljs-string">&#x27;runserver 0.0.0.0:8989&#x27;</span>,
+      <span class="hljs-attr">script</span>: <span class="hljs-string">&#x27;manage.py&#x27;</span>,
+      <span class="hljs-attr">exec_mode</span>: <span class="hljs-string">&#x27;fork&#x27;</span>,
+      <span class="hljs-attr">exec_interpreter</span>: <span class="hljs-string">&#x27;/Users/goze/python/ac/env/bin/python&#x27;</span>,
+    },
+  ],
+}
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="nodejs举例"><code>nodeJs</code>举例</h3>
+          <pre><code class="hljs language-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">apps</span>: [
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;xxx&#x27;</span>,
+      <span class="hljs-attr">script</span>: <span class="hljs-string">&#x27;app.js&#x27;</span>,
+      <span class="hljs-comment">// 机器mem为 20g  11c</span>
+      <span class="hljs-attr">node_args</span>: <span class="hljs-string">&#x27;--max_old_space_size=2048&#x27;</span>,
+      <span class="hljs-attr">instances</span>: <span class="hljs-string">&#x27;max&#x27;</span>,
+      <span class="hljs-attr">autorestart</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">watch</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-comment">// max_memory_restart: &#x27;600M&#x27;,</span>
+      <span class="hljs-attr">env</span>: {
+        <span class="hljs-attr">NODE_ENV</span>: <span class="hljs-string">&#x27;development&#x27;</span>,
+      },
+      <span class="hljs-attr">env_production</span>: {
+        <span class="hljs-attr">NODE_ENV</span>: <span class="hljs-string">&#x27;production&#x27;</span>,
+      },
+    },
+  ],
+}
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -104,18 +104,21 @@
       <div class="box">
         <div class="item">
           <h3 id="版本库结构">版本库结构</h3>
-          <p>版本库一般的布局结构为trunk(主干)、branches(分支)、tags(标签)</p>
+          <p>版本库一般的布局结构为 trunk(主干)、branches(分支)、tags(标签)</p>
           <ul>
             <li>
               <code>trunk</code> 就是开发的主线，一般项目都是导入到主线来开发的
             </li>
             <li>
-              <code>branch</code>
-              一般是trunk某个版本的拷贝，如果你想在某一段时间单独对某个功能进行开发，而不像和其他功能混在一起，这时候branches是一个很好用的方式。
+              <code>branch</code> 一般是 trunk
+              某个版本的拷贝，如果你想在某一段时间单独对某个功能进行开发，而不像和其他功能混在一起，这时候
+              branches 是一个很好用的方式。
             </li>
             <li>
               <code>tags</code>
-              某个版本的记录。迭代开发时，在某个版本发布应用，为了做个记录，这时候打个tag很实用。发布后，线上出现了一个bug，可以根据这个tag进行修复再发版本。
+              某个版本的记录。迭代开发时，在某个版本发布应用，为了做个记录，这时候打个
+              tag 很实用。发布后，线上出现了一个 bug，可以根据这个 tag
+              进行修复再发版本。
             </li>
           </ul>
         </div>
@@ -152,7 +155,8 @@ svn ci path_to_file -m <span class="hljs-string">&quot;更新说明&quot;</span>
         <div class="item">
           <h3 id="增加分支">增加分支</h3>
           <p>
-            增加一个分支，实际上就是把trunk复制到branches目录下，起一个特定的名字，常用版本号
+            增加一个分支，实际上就是把 trunk 复制到 branches
+            目录下，起一个特定的名字，常用版本号
           </p>
           <pre><code class="hljs language-bash">svn copy svn://../trunk/project svn://../branches/project_buy -m <span class="hljs-string">&quot;添加购买功能分支&quot;</span>
 </code></pre>
@@ -160,7 +164,8 @@ svn ci path_to_file -m <span class="hljs-string">&quot;更新说明&quot;</span>
         <div class="item">
           <h3 id="合并分支">合并分支</h3>
           <p>
-            增加一个分支，实际上就是把trunk复制到branches目录下，起一个特定的名字，常用版本号
+            增加一个分支，实际上就是把 trunk 复制到 branches
+            目录下，起一个特定的名字，常用版本号
           </p>
           <pre><code class="hljs language-bash"><span class="hljs-comment"># setp 1</span>
 <span class="hljs-comment"># r1:r2表示从版本记录r1和r2之间的变化合并到当前工作目录中。</span>
