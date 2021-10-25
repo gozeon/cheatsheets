@@ -40,13 +40,22 @@ fg('*.md', {
   })
 
   const attributes = await Promise.all(promises)
-  const category = _.uniq(
-    _.flatten(_.map(attributes, (item) => _.split(item?.category || '', ',')))
+  const category = _.compact(
+    _.uniq(
+      _.map(
+        _.flatten(
+          _.map(attributes, (item) => _.split(item?.category || '', ','))
+        ),
+        (item) => _.camelCase(item)
+      )
+    )
   )
 
   // render index.html
   const result = _.map(category, (item) => {
-    const docs = _.filter(attributes, (doc) => _.includes(doc.category, item))
+    const docs = _.filter(attributes, (doc) =>
+      new RegExp(item, 'ig').test(doc.category)
+    )
 
     const aTag = {
       tag: 'a',

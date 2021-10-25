@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>example</title>
+    <title>标题</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -12,6 +12,14 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad()
+    </script>
     <style>
       body {
         background-color: #f1f3f5;
@@ -21,9 +29,36 @@
           ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
       }
 
+      .hljs {
+        background-color: #ffffff;
+      }
+
       .container {
         width: 60vw;
         margin: 0 auto;
+      }
+
+      header {
+        height: 10vh;
+        line-height: 10vh;
+      }
+
+      header a {
+        text-decoration: none;
+        padding: 0.3vw 0.5vw;
+        border: 1px #89a solid;
+        border-radius: 0.2vw;
+        color: #89a;
+      }
+
+      header a:hover {
+        background-color: #ffffff;
+        border-color: #345;
+        color: #345;
+      }
+
+      h1 {
+        font-size: 1.5em;
       }
 
       h3 {
@@ -48,51 +83,47 @@
       .box {
         display: flex;
         flex-wrap: wrap;
+        gap: 1vh;
       }
 
       .item {
-        font-size: 14px;
-        padding: 8px 20px;
-        margin: 3px 8px;
-        text-decoration: none;
-        color: #345;
-      }
-
-      .item::after {
-        content: '';
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        margin-left: 5px;
-        background-color: #77dab2;
-        border-radius: 50%;
+        flex: 1;
       }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <h3>css</h3>
-      <div class="box"><a class="item" href="css">css</a></div>
-      <h3>javaScript</h3>
+      <header>
+        <a href="javascript:history.back()">Go Back</a>
+      </header>
+
+      <h1>标题</h1>
+      <p>这是介绍</p>
+      <h1 id="分类1">分类1</h1>
       <div class="box">
-        <a class="item" href="jquery">jQuery</a
-        ><a class="item" href="layui">layui</a
-        ><a class="item" href="npm">npm</a>
+        <div class="item">
+          <h3 id="标题">标题</h3>
+          <p>描述内容</p>
+          <pre><code>代码
+</code></pre>
+        </div>
       </div>
-      <h3>jQuery</h3>
-      <div class="box"><a class="item" href="jquery">jQuery</a></div>
-      <h3>layui</h3>
-      <div class="box"><a class="item" href="layui">layui</a></div>
-      <h3>nginx</h3>
-      <div class="box"><a class="item" href="nginx">nginx</a></div>
-      <h3>other</h3>
+      <h1 id="分类2">分类2</h1>
       <div class="box">
-        <a class="item" href="nginx">nginx</a><a class="item" href="npm">npm</a
-        ><a class="item" href="svn">SVN 常用命令</a>
+        <div class="item">
+          <h3 id="标题-1">标题</h3>
+          <p>描述内容</p>
+          <pre><code>代码
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="标题-2">标题</h3>
+          <p>描述内容</p>
+          <pre><code>代码
+</code></pre>
+        </div>
       </div>
-      <h3>svn</h3>
-      <div class="box"><a class="item" href="svn">SVN 常用命令</a></div>
     </div>
   </body>
 </html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVN 常用命令</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad()
+    </script>
+    <style>
+      body {
+        background-color: #f1f3f5;
+        color: #345;
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen,
+          ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+      }
+
+      .hljs {
+        background-color: #ffffff;
+      }
+
+      .container {
+        width: 60vw;
+        margin: 0 auto;
+      }
+
+      header {
+        height: 10vh;
+        line-height: 10vh;
+      }
+
+      header a {
+        text-decoration: none;
+        padding: 0.3vw 0.5vw;
+        border: 1px #89a solid;
+        border-radius: 0.2vw;
+        color: #89a;
+      }
+
+      header a:hover {
+        background-color: #ffffff;
+        border-color: #345;
+        color: #345;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        color: #745fb5;
+        white-space: nowrap;
+      }
+
+      h3::after {
+        margin-left: 24px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          rgba(116, 95, 181, 0.2),
+          transparent 80%
+        );
+      }
+
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1vh;
+      }
+
+      .item {
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <a href="javascript:history.back()">Go Back</a>
+      </header>
+
+      <h1>SVN 常用命令</h1>
+      <p><a href="https://subversion.apache.org/">官网</a></p>
+      <h1 id="基础知识点">基础知识点</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="版本库结构">版本库结构</h3>
+          <p>版本库一般的布局结构为trunk(主干)、branches(分支)、tags(标签)</p>
+          <ul>
+            <li>
+              <code>trunk</code> 就是开发的主线，一般项目都是导入到主线来开发的
+            </li>
+            <li>
+              <code>branch</code>
+              一般是trunk某个版本的拷贝，如果你想在某一段时间单独对某个功能进行开发，而不像和其他功能混在一起，这时候branches是一个很好用的方式。
+            </li>
+            <li>
+              <code>tags</code>
+              某个版本的记录。迭代开发时，在某个版本发布应用，为了做个记录，这时候打个tag很实用。发布后，线上出现了一个bug，可以根据这个tag进行修复再发版本。
+            </li>
+          </ul>
+        </div>
+      </div>
+      <h1 id="常用命令">常用命令</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="checkout">checkout</h3>
+          <p>检出，将代码克隆到本地，类似 <code>git clone</code></p>
+          <pre><code class="hljs language-bash"><span class="hljs-comment"># 代码检出比较简单，执行以下命令，$project_name表示项目名称：</span>
+svn co svn://.../path <span class="hljs-variable">$project_name</span>
+<span class="hljs-comment"># 有时想检出某个历史版本，$version标识版本号：</span>
+svn co svn://.../path@<span class="hljs-variable">$version</span> <span class="hljs-variable">$project_name</span>
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="commit">commit</h3>
+          <p>提交代码</p>
+          <pre><code class="hljs language-bash"><span class="hljs-comment"># 所有文件</span>
+svn ci -m <span class="hljs-string">&quot;更新说明&quot;</span>
+<span class="hljs-comment"># 只提交某个文件：</span>
+svn ci path_to_file -m <span class="hljs-string">&quot;更新说明&quot;</span>
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="update">update</h3>
+          <p>更新代码，类似 <code>git pull/fetch</code></p>
+          <pre><code class="hljs language-bash">svn update
+</code></pre>
+        </div>
+      </div>
+      <h1 id="分支">分支</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="增加分支">增加分支</h3>
+          <p>
+            增加一个分支，实际上就是把trunk复制到branches目录下，起一个特定的名字，常用版本号
+          </p>
+          <pre><code class="hljs language-bash">svn copy svn://../trunk/project svn://../branches/project_buy -m <span class="hljs-string">&quot;添加购买功能分支&quot;</span>
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="合并分支">合并分支</h3>
+          <p>
+            增加一个分支，实际上就是把trunk复制到branches目录下，起一个特定的名字，常用版本号
+          </p>
+          <pre><code class="hljs language-bash"><span class="hljs-comment"># setp 1</span>
+<span class="hljs-comment"># r1:r2表示从版本记录r1和r2之间的变化合并到当前工作目录中。</span>
+svn merge -r r1:r2 svn://../branches/project_buy ./
+
+<span class="hljs-comment"># setp 2</span>
+<span class="hljs-comment"># 提交</span>
+svn ci -m <span class="hljs-string">&quot;合并购买功能到主干&quot;</span>
+
+<span class="hljs-comment"># setp 3 （可选）</span>
+<span class="hljs-comment"># 删除分支</span>
+svn delete svn://../branches/project_buy -m <span class="hljs-string">&quot;删除购买功能到主干&quot;</span>
+</code></pre>
+        </div>
+      </div>
+      <h1 id="标签">标签</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="创建">创建</h3>
+          <pre><code class="hljs language-bash">svn copy svn://../trunk/project svn://../tags/project_tag1 -m <span class="hljs-string">&quot;创建标签1&quot;</span>
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="删除">删除</h3>
+          <pre><code class="hljs language-bash">svn <span class="hljs-built_in">rm</span> svn://../tags/project_tag1 -m <span class="hljs-string">&quot;删除标签1&quot;</span>
+</code></pre>
+        </div>
+      </div>
+      <h1 id="版本">版本</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="版本回退">版本回退</h3>
+          <pre><code class="hljs language-bash"><span class="hljs-comment"># 没有提交的代码回退</span>
+svn revert svn://../path_to_file
+
+<span class="hljs-comment"># 已提交代码回退</span>
+svn merge -r r2:r1 svn://../path_to_file merge_file
+</code></pre>
+        </div>
+      </div>
+      <h1 id="其他">其他</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="常用命令-1">常用命令</h3>
+          <pre><code class="hljs language-bash"><span class="hljs-comment"># 查看版本历史记录, 按n进行下翻，按q退出</span>
+svn <span class="hljs-built_in">log</span> | more
+
+<span class="hljs-comment"># 查看版本历史记录，并看修改了哪些文件</span>
+svn <span class="hljs-built_in">log</span> -v | more
+
+<span class="hljs-comment"># 查看文件变化diff, 本地文件和版本库的变化</span>
+svn diff path_to_file | more
+
+<span class="hljs-comment"># 版本库版本的变化</span>
+svn diff -c r svn://../path_to_file | more
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
