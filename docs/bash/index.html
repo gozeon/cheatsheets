@@ -111,11 +111,11 @@
           <pre><code class="hljs language-bash"><span class="hljs-meta">#!/usr/bin/expect -f</span>
 
 <span class="hljs-comment"># 增加权限</span>
-<span class="hljs-comment"># chmod +x scp.sh </span>
+<span class="hljs-comment"># chmod +x scp.sh</span>
 <span class="hljs-comment"># 执行</span>
 <span class="hljs-comment"># ./scp.sh</span>
 
-<span class="hljs-comment"># 本地目录 ./dist </span>
+<span class="hljs-comment"># 本地目录 ./dist</span>
 spawn bash -c <span class="hljs-string">&quot;scp -r ./dist root@IP:/var/www/html&quot;</span>
 
 expect {

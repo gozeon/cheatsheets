@@ -106,21 +106,23 @@
         See MDN Web Docs
         <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">Css</a>
       </p>
-      <h1 id=""><color></color></h1>
+      <h1 id="常用">常用</h1>
       <div class="box">
         <div class="item">
-          <h3 id="color">Color</h3>
+          <h3 id="虚线边框">虚线边框</h3>
           <p>
-            The color CSS property sets the foreground color value of an
-            element&#39;s text and text decorations, and sets the
-            <currentcolor>
-              value. currentcolor may be used as an indirect value on other
-              properties and is the default for other color properties, such as
-              border-color.</currentcolor
+            <a
+              href="https://css-tricks.com/more-control-over-css-borders-with-background-image/"
+              >参考1</a
             >
+            <a href="https://www.cnblogs.com/libin-1/p/7096926.html">参考2</a>
           </p>
-          <pre><code class="hljs language-css"><span class="hljs-attribute">color</span>: rebeccapurple;
-<span class="hljs-attribute">color</span>: <span class="hljs-number">#00ff00</span>;
+          <pre><code class="hljs language-css"><span class="hljs-selector-class">.border-dotted</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> dashed transparent;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(white,white) padding-box,
+    <span class="hljs-built_in">repeating-linear-gradient</span>(-<span class="hljs-number">45deg</span>,<span class="hljs-number">#ccc</span> <span class="hljs-number">0</span>, <span class="hljs-number">#ccc</span> <span class="hljs-number">0.25em</span>,white <span class="hljs-number">0</span>,white <span class="hljs-number">0.75em</span>);
+}
 </code></pre>
         </div>
       </div>
