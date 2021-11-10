@@ -108,18 +108,18 @@
         <div class="item">
           <h3 id="bfcache">bfcache</h3>
           <p>
-            多页项目 且 在ssr的情况下，浏览器<code>前进</code> 和
+            多页项目 且 在 ssr 的情况下，浏览器<code>前进</code> 和
             <code>后退</code> 时候，会走缓存, 详细可见<a
               href="https://web.dev/bfcache/"
               >参考</a
             >,<a
               href="https://stackoverflow.com/questions/49547/how-do-we-control-web-page-caching-across-all-browsers"
-              >参考1</a
+              >参考 1</a
             >,<a
               href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control"
-              >参考2</a
-            >, 可用<code>window.onpageshow</code>进行调试，下面是spring
-            boot的themyleaf禁用的代码
+              >参考 2</a
+            >, 可用<code>window.onpageshow</code>进行调试，下面是 spring boot 的
+            themyleaf 禁用的代码
           </p>
           <pre><code class="hljs language-java"><span class="hljs-comment">// 禁用bfc代码</span>
 <span class="hljs-meta">@GetMapping</span>

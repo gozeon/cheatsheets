@@ -32,3 +32,35 @@ expect {
 }
 interact
 ```
+
+### zip 压缩
+
+遍历目录，将目录压缩成 zip，文件名为目录名
+
+```bash
+#!/bin/bash
+
+###
+# 描述：遍历目录，将文件夹打包成zip，上传cms
+# 运行：sh zip.sh
+# 环境：需支持bash和zip命令
+###
+
+# verbose 日志
+set -ex
+
+cwd=`pwd`
+
+for file in `ls $cwd`
+do
+    if [ -d $cwd"/"$file ] ;then
+        cd $file
+        # -x 排除文件
+        zip $file.zip -r ./* -x '*.zip*'
+        # 如果将zip包移动出来，也可以不移动出来
+        mv $file.zip ../
+        cd ..
+    fi
+done
+
+```

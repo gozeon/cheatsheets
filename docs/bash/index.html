@@ -130,6 +130,35 @@ expect {
 interact
 </code></pre>
         </div>
+        <div class="item">
+          <h3 id="zip压缩">zip压缩</h3>
+          <p>遍历目录，将目录压缩成zip，文件名为目录名</p>
+          <pre><code class="hljs language-bash"><span class="hljs-meta">#!/bin/bash</span>
+
+<span class="hljs-comment">###</span>
+<span class="hljs-comment"># 描述：遍历目录，将文件夹打包成zip，上传cms</span>
+<span class="hljs-comment"># 运行：sh zip.sh</span>
+<span class="hljs-comment"># 环境：需支持bash和zip命令</span>
+<span class="hljs-comment">###</span>
+
+<span class="hljs-comment"># verbose 日志</span>
+<span class="hljs-built_in">set</span> -ex
+
+cwd=`<span class="hljs-built_in">pwd</span>`
+
+<span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> `<span class="hljs-built_in">ls</span> <span class="hljs-variable">$cwd</span>`
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> [ -d <span class="hljs-variable">$cwd</span><span class="hljs-string">&quot;/&quot;</span><span class="hljs-variable">$file</span> ] ;<span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">cd</span> <span class="hljs-variable">$file</span> 
+        <span class="hljs-comment"># -x 排除文件</span>
+        zip <span class="hljs-variable">$file</span>.zip -r ./* -x <span class="hljs-string">&#x27;*.zip*&#x27;</span>
+        <span class="hljs-comment"># 如果将zip包移动出来，也可以不移动出来</span>
+        <span class="hljs-built_in">mv</span> <span class="hljs-variable">$file</span>.zip ../
+        <span class="hljs-built_in">cd</span> ..
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+        </div>
       </div>
     </div>
   </body>
