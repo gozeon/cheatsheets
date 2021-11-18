@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Bash" />
+    <meta
+      name="description"
+      content="See [Docs](https://www.gnu.org/software/bash/)常用脚本上传文件上传文件到服务器目录自动输入密码增加权限执行本地目录压缩遍历目录将目录压缩成文件名为目录名描述遍历目录将文件夹打包成上传运行环境需支持和命令日志排除文件如果将包移动出来也可以不移动出来"
+    />
     <title>bash</title>
     <link
       rel="stylesheet"
@@ -131,8 +136,8 @@ interact
 </code></pre>
         </div>
         <div class="item">
-          <h3 id="zip压缩">zip压缩</h3>
-          <p>遍历目录，将目录压缩成zip，文件名为目录名</p>
+          <h3 id="zip-压缩">zip 压缩</h3>
+          <p>遍历目录，将目录压缩成 zip，文件名为目录名</p>
           <pre><code class="hljs language-bash"><span class="hljs-meta">#!/bin/bash</span>
 
 <span class="hljs-comment">###</span>
@@ -149,7 +154,7 @@ cwd=`<span class="hljs-built_in">pwd</span>`
 <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> `<span class="hljs-built_in">ls</span> <span class="hljs-variable">$cwd</span>`
 <span class="hljs-keyword">do</span>
     <span class="hljs-keyword">if</span> [ -d <span class="hljs-variable">$cwd</span><span class="hljs-string">&quot;/&quot;</span><span class="hljs-variable">$file</span> ] ;<span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">cd</span> <span class="hljs-variable">$file</span> 
+        <span class="hljs-built_in">cd</span> <span class="hljs-variable">$file</span>
         <span class="hljs-comment"># -x 排除文件</span>
         zip <span class="hljs-variable">$file</span>.zip -r ./* -x <span class="hljs-string">&#x27;*.zip*&#x27;</span>
         <span class="hljs-comment"># 如果将zip包移动出来，也可以不移动出来</span>

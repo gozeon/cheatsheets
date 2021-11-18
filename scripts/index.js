@@ -26,6 +26,7 @@ fg('*.md', {
       ...attributes,
       intro: marked(attributes?.intro || ''),
       document: await parser(marked(body)),
+      metaDesc: attributes?.intro + body.match(/[\u4e00-\u9fa5]/g).join(''),
     }
     const htmlScope = path.parse(file).name
 
@@ -57,12 +58,6 @@ fg('*.md', {
       new RegExp(item, 'ig').test(doc.category)
     )
 
-    const aTag = {
-      tag: 'a',
-      attars: { class: 'item', href: '' },
-      content: '',
-    }
-
     return [
       {
         tag: 'h3',
@@ -83,10 +78,9 @@ fg('*.md', {
   })
 
   const document = await genHtml(_.flatten(result))
-
   ejs.renderFile(
     indexTmpFile,
-    { document },
+    { document, category: category.join(', ') },
     { cache: false },
     function (err, str) {
       fs.outputFileSync(path.join(htmlFolder, 'index.html'), str, 'utf-8')
