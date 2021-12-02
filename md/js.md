@@ -35,6 +35,9 @@ https://github.com/glidejs/glide
 popup
 https://github.com/sweetalert2/sweetalert2
 https://github.com/popperjs/popper-core
+
+progress bar
+https://github.com/CodeByZach/pace
 ```
 
 ### 插入 js 内容

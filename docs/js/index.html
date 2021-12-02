@@ -142,23 +142,26 @@ https://github.com/glidejs/glide
 popup
 https://github.com/sweetalert2/sweetalert2
 https://github.com/popperjs/popper-core
+
+progress bar
+https://github.com/CodeByZach/pace
 </code></pre>
         </div>
         <div class="item">
-          <h3 id="插入js内容">插入js内容</h3>
+          <h3 id="插入-js-内容">插入 js 内容</h3>
           <p>
-            babel编译，插入<code>script</code>, see
+            babel 编译，插入<code>script</code>, see
             <a href="https://babeljs.io/docs/en/babel-standalone">doc</a>
           </p>
-          <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> input = <span class="hljs-string">&#x27;const getMessage = () =&gt; &quot;Hello World&quot;;&#x27;</span>;
-<span class="hljs-keyword">var</span> output = <span class="hljs-title class_">Babel</span>.<span class="hljs-title function_">transform</span>(input, { <span class="hljs-attr">presets</span>: [<span class="hljs-string">&quot;env&quot;</span>] }).<span class="hljs-property">code</span>;
+          <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> input = <span class="hljs-string">&#x27;const getMessage = () =&gt; &quot;Hello World&quot;;&#x27;</span>
+<span class="hljs-keyword">var</span> output = <span class="hljs-title class_">Babel</span>.<span class="hljs-title function_">transform</span>(input, { <span class="hljs-attr">presets</span>: [<span class="hljs-string">&#x27;env&#x27;</span>] }).<span class="hljs-property">code</span>
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(output)
-<span class="hljs-keyword">var</span> script = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;script&#x27;</span>);
-script.<span class="hljs-property">type</span> = <span class="hljs-string">&quot;text/javascript&quot;</span>;
+<span class="hljs-keyword">var</span> script = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;script&#x27;</span>)
+script.<span class="hljs-property">type</span> = <span class="hljs-string">&#x27;text/javascript&#x27;</span>
 <span class="hljs-keyword">try</span> {
-    script.<span class="hljs-title function_">appendChild</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(output));
-} <span class="hljs-keyword">catch</span>(e) {
-    script.<span class="hljs-property">text</span> = output;
+  script.<span class="hljs-title function_">appendChild</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(output))
+} <span class="hljs-keyword">catch</span> (e) {
+  script.<span class="hljs-property">text</span> = output
 }
 <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(script)
 </code></pre>

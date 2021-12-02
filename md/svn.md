@@ -46,6 +46,23 @@ svn ci path_to_file -m "更新说明"
 svn update
 ```
 
+### changelist
+
+[doc](https://svnbook.red-bean.com/en/1.6/svn.ref.svn.c.changelist.html)
+
+```bash
+# 新建
+svn changelist "name" file1 file2..
+# 增加文件
+svn changelist "name" newfile1 newfile2..
+# 剔除文件
+svn changelist --remove a.txt
+# list
+svn status
+# commit
+svn commit --changelist=name -m "message"
+```
+
 # 分支
 
 ### 增加分支
