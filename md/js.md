@@ -38,6 +38,19 @@ https://github.com/popperjs/popper-core
 
 progress bar
 https://github.com/CodeByZach/pace
+
+notifications
+https://carlosroso.com/notyf/
+
+树组件
+http://wwwendt.de/tech/fancytree/demo/
+
+滚动条
+http://grsmto.github.io/simplebar/
+
+布局+筛选+排序
+https://isotope.metafizzy.co/
+
 ```
 
 ### 插入 js 内容
