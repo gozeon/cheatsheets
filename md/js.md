@@ -53,6 +53,9 @@ http://grsmto.github.io/simplebar/
 布局+筛选+排序
 https://isotope.metafizzy.co/
 
+select
+https://choices-js.github.io/Choices/
+https://select2.org
 ```
 
 ### 插入 js 内容
