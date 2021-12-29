@@ -25,12 +25,14 @@ https://github.com/luisvinicius167/ityped
 滚动效果 动画
 https://github.com/michalsnik/aos
 https://github.com/alexfoxy/lax.js
+https://github.com/silvestreh/onScreen
 
 jquery hover 效果
 https://github.com/gijsroge/tilt.js
 
 slider
 https://github.com/glidejs/glide
+https://refreshless.com/nouislider/
 
 popup
 https://github.com/sweetalert2/sweetalert2
