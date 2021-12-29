@@ -21,6 +21,11 @@ https://github.com/robinparisi/tingle
 输入框输入效果
 https://github.com/luisvinicius167/ityped
 
+时间
+https://github.com/flatpickr/flatpickr
+
+数字效果
+https://inorganik.github.io/countUp.js/
 
 滚动效果 动画
 https://github.com/michalsnik/aos
