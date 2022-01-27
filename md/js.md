@@ -61,6 +61,10 @@ https://isotope.metafizzy.co/
 select
 https://choices-js.github.io/Choices/
 https://select2.org
+
+数字处理
+https://mathjs.org/index.html
+http://numeraljs.com/
 ```
 
 ### 插入 js 内容
