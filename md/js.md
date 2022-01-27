@@ -65,6 +65,9 @@ https://select2.org
 数字处理
 https://mathjs.org/index.html
 http://numeraljs.com/
+
+校验
+https://github.com/yiminghe/async-validator
 ```
 
 ### 插入 js 内容
