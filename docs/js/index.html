@@ -7,7 +7,7 @@
     <meta name="keywords" content="JavaScript, web" />
     <meta
       name="description"
-      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验插入内容编译插入百分比例子设置值获取值"
+      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验插入内容编译插入百分比例子设置值获取值例子参考文档"
     />
     <title>js</title>
     <link
@@ -200,22 +200,41 @@ script.<span class="hljs-property">type</span> = <span class="hljs-string">&#x27
           <h3 id="cleavejs-百分比例子">Cleave.js 百分比例子</h3>
           <p><a href="https://github.com/nosir/cleave.js">Cleave.js</a></p>
           <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> cleave = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cleave</span>(<span class="hljs-string">&#x27;.input-phone&#x27;</span>, {
-    <span class="hljs-attr">numeral</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">prefix</span>: <span class="hljs-string">&#x27;%&#x27;</span>,
-    <span class="hljs-attr">tailPrefix</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">noImmediatePrefix</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">numericOnly</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-comment">// numeralDecimalScale: 0,</span>
-    <span class="hljs-attr">onValueChanged</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">ee</span>) {
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ee.<span class="hljs-property">target</span>)
-    }
-});
+  <span class="hljs-attr">numeral</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">prefix</span>: <span class="hljs-string">&#x27;%&#x27;</span>,
+  <span class="hljs-attr">tailPrefix</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">noImmediatePrefix</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">numericOnly</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// numeralDecimalScale: 0,</span>
+  <span class="hljs-attr">onValueChanged</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">ee</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ee.<span class="hljs-property">target</span>)
+  },
+})
 
 <span class="hljs-comment">// 设置值</span>
-cleave.<span class="hljs-title function_">setRawValue</span>(<span class="hljs-string">&#x27;123&#x27;</span>);
+cleave.<span class="hljs-title function_">setRawValue</span>(<span class="hljs-string">&#x27;123&#x27;</span>)
 
 <span class="hljs-comment">// 获取值</span>
-cleave.<span class="hljs-title function_">getRawValue</span>();
+cleave.<span class="hljs-title function_">getRawValue</span>()
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="mobxjs-js例子">mobx.js js例子</h3>
+          <p>
+            参考文档<a
+              href="https://www.sitepoint.com/manage-javascript-application-state-mobx/"
+              >link</a
+            >
+          </p>
+          <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> data = mobx.<span class="hljs-title function_">observable</span>({
+    <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>,
+})
+
+mobx.<span class="hljs-title function_">autorun</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;autorun&#x27;</span>, data.<span class="hljs-property">a</span>);
+})
+
+data.<span class="hljs-property">a</span> = <span class="hljs-number">2</span>
 </code></pre>
         </div>
       </div>

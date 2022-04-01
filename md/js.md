@@ -111,3 +111,19 @@ cleave.setRawValue('123')
 // 获取值
 cleave.getRawValue()
 ```
+
+### mobx.js js 例子
+
+参考文档[link](https://www.sitepoint.com/manage-javascript-application-state-mobx/)
+
+```js
+var data = mobx.observable({
+  a: 1,
+})
+
+mobx.autorun(function () {
+  console.log('autorun', data.a)
+})
+
+data.a = 2
+```
