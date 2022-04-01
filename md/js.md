@@ -87,3 +87,27 @@ try {
 }
 document.body.appendChild(script)
 ```
+
+### Cleave.js 百分比例子
+
+[Cleave.js](https://github.com/nosir/cleave.js)
+
+```js
+var cleave = new Cleave('.input-phone', {
+  numeral: true,
+  prefix: '%',
+  tailPrefix: true,
+  noImmediatePrefix: true,
+  numericOnly: true,
+  // numeralDecimalScale: 0,
+  onValueChanged: function (ee) {
+    console.log(ee.target)
+  },
+})
+
+// 设置值
+cleave.setRawValue('123')
+
+// 获取值
+cleave.getRawValue()
+```
