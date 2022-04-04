@@ -7,7 +7,7 @@
     <meta name="keywords" content="JavaScript, web" />
     <meta
       name="description"
-      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验插入内容编译插入百分比例子设置值获取值例子参考文档"
+      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验插入内容编译插入百分比例子设置值获取值例子参考文档例子参考文档"
     />
     <title>js</title>
     <link
@@ -219,7 +219,7 @@ cleave.<span class="hljs-title function_">getRawValue</span>()
 </code></pre>
         </div>
         <div class="item">
-          <h3 id="mobxjs-js例子">mobx.js js例子</h3>
+          <h3 id="mobxjs-js-例子">mobx.js js 例子</h3>
           <p>
             参考文档<a
               href="https://www.sitepoint.com/manage-javascript-application-state-mobx/"
@@ -227,14 +227,41 @@ cleave.<span class="hljs-title function_">getRawValue</span>()
             >
           </p>
           <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> data = mobx.<span class="hljs-title function_">observable</span>({
-    <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>,
 })
 
 mobx.<span class="hljs-title function_">autorun</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;autorun&#x27;</span>, data.<span class="hljs-property">a</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;autorun&#x27;</span>, data.<span class="hljs-property">a</span>)
 })
 
 data.<span class="hljs-property">a</span> = <span class="hljs-number">2</span>
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="rxjs-例子">rxjs 例子</h3>
+          <p>
+            参考文档<a
+              href="https://www.learnrxjs.io/learn-rxjs/subjects/behaviorsubject"
+              >link</a
+            >
+          </p>
+          <pre><code class="hljs language-js"><span class="hljs-comment">// var sub = new rxjs.Subject()</span>
+<span class="hljs-keyword">var</span> sub = <span class="hljs-keyword">new</span> rxjs.<span class="hljs-title class_">BehaviorSubject</span>()
+sub.<span class="hljs-title function_">next</span>({<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>});
+sub.<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Subscriber A&#x27;</span>, x)
+})
+sub.<span class="hljs-title function_">next</span>({<span class="hljs-attr">a</span>: <span class="hljs-number">2</span>});
+sub.<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Subscriber B&#x27;</span>, x);
+  <span class="hljs-comment">// make sure BehaviorSubject</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sub.<span class="hljs-title function_">getValue</span>())
+});
+sub.<span class="hljs-title function_">next</span>(<span class="hljs-number">3</span>);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;------------with other api ------------&#x27;</span>);
+<span class="hljs-keyword">const</span> observable = rxjs.<span class="hljs-title function_">interval</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">pipe</span>(rxjs.<span class="hljs-title function_">take</span>(<span class="hljs-number">41</span>));
+observable.<span class="hljs-title function_">subscribe</span>(sub)
 </code></pre>
         </div>
       </div>
