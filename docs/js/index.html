@@ -7,7 +7,7 @@
     <meta name="keywords" content="JavaScript, web" />
     <meta
       name="description"
-      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验插入内容编译插入百分比例子设置值获取值例子参考文档例子参考文档"
+      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验插入内容编译插入百分比例子设置值获取值例子参考文档例子参考文档对象数组转换树结构可参考"
     />
     <title>js</title>
     <link
@@ -247,21 +247,63 @@ data.<span class="hljs-property">a</span> = <span class="hljs-number">2</span>
           </p>
           <pre><code class="hljs language-js"><span class="hljs-comment">// var sub = new rxjs.Subject()</span>
 <span class="hljs-keyword">var</span> sub = <span class="hljs-keyword">new</span> rxjs.<span class="hljs-title class_">BehaviorSubject</span>()
-sub.<span class="hljs-title function_">next</span>({<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>});
-sub.<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Subscriber A&#x27;</span>, x)
+sub.<span class="hljs-title function_">next</span>({ <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> })
+sub.<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Subscriber A&#x27;</span>, x)
 })
-sub.<span class="hljs-title function_">next</span>({<span class="hljs-attr">a</span>: <span class="hljs-number">2</span>});
-sub.<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
-  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Subscriber B&#x27;</span>, x);
+sub.<span class="hljs-title function_">next</span>({ <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> })
+sub.<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Subscriber B&#x27;</span>, x)
   <span class="hljs-comment">// make sure BehaviorSubject</span>
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sub.<span class="hljs-title function_">getValue</span>())
-});
-sub.<span class="hljs-title function_">next</span>(<span class="hljs-number">3</span>);
+})
+sub.<span class="hljs-title function_">next</span>(<span class="hljs-number">3</span>)
 
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;------------with other api ------------&#x27;</span>);
-<span class="hljs-keyword">const</span> observable = rxjs.<span class="hljs-title function_">interval</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">pipe</span>(rxjs.<span class="hljs-title function_">take</span>(<span class="hljs-number">41</span>));
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;------------with other api ------------&#x27;</span>)
+<span class="hljs-keyword">const</span> observable = rxjs.<span class="hljs-title function_">interval</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">pipe</span>(rxjs.<span class="hljs-title function_">take</span>(<span class="hljs-number">41</span>))
 observable.<span class="hljs-title function_">subscribe</span>(sub)
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="js-nest--对象数组转换树结构">js nest , 对象数组转换树结构</h3>
+          <p>
+            可参考<a
+              href="https://stackoverflow.com/questions/62938888/nest-flat-objects-based-on-a-parentid-and-id-property"
+              >link</a
+            >,
+            <a
+              href="https://stackoverflow.com/questions/68330014/flat-array-to-tree-javascript"
+              >link2</a
+            >
+          </p>
+          <pre><code class="hljs language-js">   { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">child</span>: [] },
+   { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">child</span>: [] },
+   { <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">child</span>: [] },
+   { <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">child</span>: [] },
+   { <span class="hljs-attr">id</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">child</span>: [] },
+   { <span class="hljs-attr">id</span>: <span class="hljs-number">6</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">child</span>: [] },
+   { <span class="hljs-attr">id</span>: <span class="hljs-number">7</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">child</span>: [] },
+   { <span class="hljs-attr">id</span>: <span class="hljs-number">8</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">6</span>, <span class="hljs-attr">child</span>: [] },
+]
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">nest</span>(<span class="hljs-params">data, parentId=<span class="hljs-number">0</span></span>) {
+    <span class="hljs-keyword">const</span> result = []
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i&lt; data.<span class="hljs-property">length</span>; i++) {
+
+        <span class="hljs-keyword">if</span>(data[i].<span class="hljs-property">parentId</span> == parentId) {
+            result.<span class="hljs-title function_">push</span>(data[i])
+            data[i].<span class="hljs-property">child</span> = data.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">parentId</span> == data[i].<span class="hljs-property">id</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {
+                item.<span class="hljs-property">child</span> = <span class="hljs-title function_">nest</span>(data, item.<span class="hljs-property">id</span>)
+                <span class="hljs-keyword">return</span> item
+            })
+        }
+    }
+
+    <span class="hljs-keyword">return</span> result
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-title function_">nest</span>(data), <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
 </code></pre>
         </div>
       </div>

@@ -151,3 +151,38 @@ console.log('------------with other api ------------')
 const observable = rxjs.interval(500).pipe(rxjs.take(41))
 observable.subscribe(sub)
 ```
+
+### js nest , 对象数组转换树结构
+
+可参考[link](https://stackoverflow.com/questions/62938888/nest-flat-objects-based-on-a-parentid-and-id-property), [link2](https://stackoverflow.com/questions/68330014/flat-array-to-tree-javascript)
+
+```js
+   { id: 1, parentId: 0, child: [] },
+   { id: 2, parentId: 0, child: [] },
+   { id: 3, parentId: 1, child: [] },
+   { id: 4, parentId: 2, child: [] },
+   { id: 5, parentId: 3, child: [] },
+   { id: 6, parentId: 4, child: [] },
+   { id: 7, parentId: 5, child: [] },
+   { id: 8, parentId: 6, child: [] },
+]
+
+function nest(data, parentId=0) {
+    const result = []
+
+    for(let i = 0; i< data.length; i++) {
+
+        if(data[i].parentId == parentId) {
+            result.push(data[i])
+            data[i].child = data.filter(item => item.parentId == data[i].id).map(item => {
+                item.child = nest(data, item.id)
+                return item
+            })
+        }
+    }
+
+    return result
+}
+
+console.log(JSON.stringify(nest(data), null, 2))
+```
