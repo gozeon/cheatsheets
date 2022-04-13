@@ -68,6 +68,10 @@ http://numeraljs.com/
 
 校验
 https://github.com/yiminghe/async-validator
+
+生成图片
+https://html2canvas.hertzen.com/
+https://github.com/tsayen/dom-to-image
 ```
 
 ### 插入 js 内容
