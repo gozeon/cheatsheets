@@ -190,3 +190,57 @@ function nest(data, parentId=0) {
 
 console.log(JSON.stringify(nest(data), null, 2))
 ```
+
+### js dom wrapper , 为 dom 套一层 dom
+
+在线展示 [link](https://codepen.io/Gozeon/full/NWXeJZQ)
+
+```js
+class Wrpper {
+  constructor(el, config) {
+    this.targetEl = el
+    this.config = {
+      defaultStyle: {
+        position: 'absolute',
+        borderStyle: 'solid',
+        borderWidth: '1px',
+        borderColor: '#000000',
+      },
+      ...config,
+    }
+    this.wrapper = document.createElement('div')
+
+    this.render()
+    this.initResizeObserver()
+  }
+  setCss(styles) {
+    for (const property in styles) {
+      this.wrapper.style[property] = styles[property]
+    }
+  }
+  initResizeObserver() {
+    this.observer = new ResizeObserver((mutations) => {
+      this.render()
+    })
+    this.observer.observe(this.targetEl)
+  }
+
+  render() {
+    const { width, height, top, left } = this.targetEl.getBoundingClientRect()
+    console.log(width, height, top, left)
+
+    this.setCss({
+      width: width + 10 + 'px',
+      height: height + 10 + 'px',
+      top: window.scrollY + top - 5 + 'px',
+      left: window.scrollX + left - 5 + 'px',
+      ...this.config.defaultStyle,
+    })
+    document.body.append(this.wrapper)
+  }
+
+  remove() {
+    this.wrapper.remove()
+  }
+}
+```
