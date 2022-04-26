@@ -244,3 +244,18 @@ class Wrpper {
   }
 }
 ```
+
+### cypress
+
+官网[link](https://www.cypress.io/)， 参考[link](https://cheatography.com/aiqbal/cheat-sheets/cypress-io/), 上传文件[link](https://www.npmjs.com/package/cypress-file-upload)
+
+```js
+// open url
+cy.visit('[url]')
+
+// get dom
+cy.get('[selector]')
+
+// assert
+cy.should('[assert]')
+```

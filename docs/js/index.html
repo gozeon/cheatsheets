@@ -7,7 +7,7 @@
     <meta name="keywords" content="JavaScript, web" />
     <meta
       name="description"
-      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验生成图片插入内容编译插入百分比例子设置值获取值例子参考文档例子参考文档对象数组转换树结构可参考为套一层在线展示"
+      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验生成图片插入内容编译插入百分比例子设置值获取值例子参考文档例子参考文档对象数组转换树结构可参考为套一层在线展示官网参考上传文件"
     />
     <title>js</title>
     <link
@@ -311,61 +311,80 @@ observable.<span class="hljs-title function_">subscribe</span>(sub)
 </code></pre>
         </div>
         <div class="item">
-          <h3 id="js-dom-wrapper--为dom套一层dom">
-            js dom wrapper , 为dom套一层dom
+          <h3 id="js-dom-wrapper--为-dom-套一层-dom">
+            js dom wrapper , 为 dom 套一层 dom
           </h3>
           <p>
             在线展示 <a href="https://codepen.io/Gozeon/full/NWXeJZQ">link</a>
           </p>
           <pre><code class="hljs language-js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Wrpper</span> {
   <span class="hljs-title function_">constructor</span>(<span class="hljs-params">el, config</span>) {
-      <span class="hljs-variable language_">this</span>.<span class="hljs-property">targetEl</span> = el
-      <span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span> = {
-          <span class="hljs-attr">defaultStyle</span>: {
-              <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;absolute&#x27;</span>,
-              <span class="hljs-attr">borderStyle</span>: <span class="hljs-string">&#x27;solid&#x27;</span>,
-              <span class="hljs-attr">borderWidth</span>: <span class="hljs-string">&#x27;1px&#x27;</span>,
-              <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;#000000&#x27;</span>,
-          },
-          ...config
-      }
-      <span class="hljs-variable language_">this</span>.<span class="hljs-property">wrapper</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">targetEl</span> = el
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span> = {
+      <span class="hljs-attr">defaultStyle</span>: {
+        <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;absolute&#x27;</span>,
+        <span class="hljs-attr">borderStyle</span>: <span class="hljs-string">&#x27;solid&#x27;</span>,
+        <span class="hljs-attr">borderWidth</span>: <span class="hljs-string">&#x27;1px&#x27;</span>,
+        <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;#000000&#x27;</span>,
+      },
+      ...config,
+    }
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">wrapper</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)
 
-      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>()
-      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initResizeObserver</span>()
-
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initResizeObserver</span>()
   }
   <span class="hljs-title function_">setCss</span>(<span class="hljs-params">styles</span>) {
-      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> property <span class="hljs-keyword">in</span> styles) {
-          <span class="hljs-variable language_">this</span>.<span class="hljs-property">wrapper</span>.<span class="hljs-property">style</span>[property] = styles[property]
-      }
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> property <span class="hljs-keyword">in</span> styles) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">wrapper</span>.<span class="hljs-property">style</span>[property] = styles[property]
+    }
   }
   <span class="hljs-title function_">initResizeObserver</span>(<span class="hljs-params"></span>) {
-      <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResizeObserver</span>(<span class="hljs-function">(<span class="hljs-params">mutations</span>) =&gt;</span> {
-          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>()
-      });
-      <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">observe</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">targetEl</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResizeObserver</span>(<span class="hljs-function">(<span class="hljs-params">mutations</span>) =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>()
+    })
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">observe</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">targetEl</span>)
   }
 
   <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
-      <span class="hljs-keyword">const</span> { width, height, top, left } = <span class="hljs-variable language_">this</span>.<span class="hljs-property">targetEl</span>.<span class="hljs-title function_">getBoundingClientRect</span>()
-      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(width, height, top, left)
+    <span class="hljs-keyword">const</span> { width, height, top, left } = <span class="hljs-variable language_">this</span>.<span class="hljs-property">targetEl</span>.<span class="hljs-title function_">getBoundingClientRect</span>()
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(width, height, top, left)
 
-      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setCss</span>({
-          <span class="hljs-attr">width</span>: width + <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;px&#x27;</span>,
-          <span class="hljs-attr">height</span>: height + <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;px&#x27;</span>,
-          <span class="hljs-attr">top</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">scrollY</span> + top - <span class="hljs-number">5</span> + <span class="hljs-string">&#x27;px&#x27;</span>,
-          <span class="hljs-attr">left</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">scrollX</span> + left - <span class="hljs-number">5</span> + <span class="hljs-string">&#x27;px&#x27;</span>,
-          ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">defaultStyle</span>,
-      })
-      <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">append</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">wrapper</span>)
-
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setCss</span>({
+      <span class="hljs-attr">width</span>: width + <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;px&#x27;</span>,
+      <span class="hljs-attr">height</span>: height + <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;px&#x27;</span>,
+      <span class="hljs-attr">top</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">scrollY</span> + top - <span class="hljs-number">5</span> + <span class="hljs-string">&#x27;px&#x27;</span>,
+      <span class="hljs-attr">left</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">scrollX</span> + left - <span class="hljs-number">5</span> + <span class="hljs-string">&#x27;px&#x27;</span>,
+      ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">defaultStyle</span>,
+    })
+    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">append</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">wrapper</span>)
   }
 
   <span class="hljs-title function_">remove</span>(<span class="hljs-params"></span>) {
-      <span class="hljs-variable language_">this</span>.<span class="hljs-property">wrapper</span>.<span class="hljs-title function_">remove</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">wrapper</span>.<span class="hljs-title function_">remove</span>()
   }
 }
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="cypress">cypress</h3>
+          <p>
+            官网<a href="https://www.cypress.io/">link</a>， 参考<a
+              href="https://cheatography.com/aiqbal/cheat-sheets/cypress-io/"
+              >link</a
+            >, 上传文件<a
+              href="https://www.npmjs.com/package/cypress-file-upload"
+              >link</a
+            >
+          </p>
+          <pre><code class="hljs language-js"><span class="hljs-comment">// open url</span>
+cy.<span class="hljs-title function_">visit</span>(<span class="hljs-string">&#x27;[url]&#x27;</span>)
+
+<span class="hljs-comment">// get dom</span>
+cy.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;[selector]&#x27;</span>)
+
+<span class="hljs-comment">// assert</span>
+cy.<span class="hljs-title function_">should</span>(<span class="hljs-string">&#x27;[assert]&#x27;</span>)
 </code></pre>
         </div>
       </div>
