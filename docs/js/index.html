@@ -7,7 +7,7 @@
     <meta name="keywords" content="JavaScript, web" />
     <meta
       name="description"
-      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验生成图片插入内容编译插入百分比例子设置值获取值例子参考文档例子参考文档对象数组转换树结构可参考为套一层在线展示官网参考上传文件"
+      content="See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)常用插入内容编译插入百分比例子设置值获取值例子参考文档例子参考文档对象数组转换树结构可参考为套一层在线展示官网参考上传文件其他效果库效果背景视频弹窗输入框输入效果时间数字效果滚动效果动画效果树组件滚动条布局筛选排序数字处理校验生成图片"
     />
     <title>js</title>
     <link
@@ -116,69 +116,79 @@
       <h1 id="常用">常用</h1>
       <div class="box">
         <div class="item">
-          <h3 id="效果库">效果库</h3>
-          <p>html+css 效果</p>
-          <pre><code class="hljs language-text">背景视频
-https://github.com/rishabhp/bideo.js
+          <h3 id="emotion">emotion</h3>
+          <p>see <a href="https://emotion.sh/docs/introduction">doc</a></p>
+          <pre><code class="hljs language-js"><span class="hljs-comment">// @emotion/css</span>
+<span class="hljs-comment">// cdn: https://cdn.jsdelivr.net/npm/@emotion/css@11.9.0/dist/emotion-css.umd.min.js</span>
+<span class="hljs-keyword">const</span> app = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>)
+<span class="hljs-keyword">const</span> myClassName = emotion.<span class="hljs-property">css</span><span class="hljs-string">`
+    color: hotpink !important;
+`</span>
+app.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(myClassName)
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="jss">jss</h3>
+          <p>see <a href="https://cssinjs.org">doc</a></p>
+          <pre><code class="hljs language-js"><span class="hljs-comment">// jss</span>
+<span class="hljs-comment">// cdn: https://cdn.jsdelivr.net/npm/jss@10.9.0/dist/jss.min.js</span>
+<span class="hljs-comment">// jss-preset-default</span>
+<span class="hljs-comment">// cdn: https://cdn.jsdelivr.net/npm/jss-preset-default@10.9.0/dist/jss-preset-default.min.js</span>
+<span class="hljs-keyword">var</span> font = {
+    <span class="hljs-attr">fontSize</span>: <span class="hljs-number">12</span>,
+    <span class="hljs-attr">lineHeight</span>: <span class="hljs-number">1</span>
+};
 
-弹窗
-https://github.com/robinparisi/tingle
+<span class="hljs-keyword">const</span> style = {
+    <span class="hljs-attr">button</span>: {
+        <span class="hljs-attr">extend</span>: font,
+        <span class="hljs-attr">border</span>: <span class="hljs-string">&#x27;none&#x27;</span>,
+        <span class="hljs-attr">margin</span>: [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>],
+        <span class="hljs-attr">transition</span>: [<span class="hljs-string">&#x27;background&#x27;</span>, <span class="hljs-string">&#x27;color&#x27;</span>, <span class="hljs-string">&#x27;font-size&#x27;</span>],
+        <span class="hljs-attr">transitionDuration</span>: <span class="hljs-number">300</span>,
+        <span class="hljs-attr">background</span>: {
+            <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;white&#x27;</span>,
+            <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;url(&quot;/some/url/image.png&quot;)&#x27;</span>,
+            <span class="hljs-attr">repeat</span>: <span class="hljs-string">&#x27;no-repeat&#x27;</span>,
+            <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;contain&#x27;</span>
+        },
+        <span class="hljs-string">&#x27;&amp;:before&#x27;</span>: {
+            <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;&quot;icon&quot;&#x27;</span>
+        }
+    },
+    <span class="hljs-attr">redButton</span>: {
+        <span class="hljs-attr">extend</span>: <span class="hljs-string">&#x27;button&#x27;</span>,
+        <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;linear-gradient(to right, red 0%, green 100%)&#x27;</span>,
+        <span class="hljs-attr">fallbacks</span>: {
+            <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;red&#x27;</span>
+        },
+        <span class="hljs-string">&#x27;&amp;:hover&#x27;</span>: {
+            <span class="hljs-attr">border</span>: [
+                [<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;solid&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>]
+            ],
+            <span class="hljs-attr">boxShadow</span>: [
+                [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-string">&#x27;blue&#x27;</span>],
+                [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">15</span>, <span class="hljs-string">&#x27;green&#x27;</span>]
+            ],
+            <span class="hljs-string">&#x27;&amp; span&#x27;</span>: {
+                <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;red&#x27;</span>
+            }
+        }
+    },
+    <span class="hljs-string">&#x27;@media (min-width: 1024px)&#x27;</span>: {
+        <span class="hljs-attr">button</span>: {
+            <span class="hljs-attr">fontSize</span>: <span class="hljs-number">16</span>
+        }
+    }
+}
 
-
-输入框输入效果
-https://github.com/luisvinicius167/ityped
-
-时间
-https://github.com/flatpickr/flatpickr
-
-数字效果
-https://inorganik.github.io/countUp.js/
-
-滚动效果 动画
-https://github.com/michalsnik/aos
-https://github.com/alexfoxy/lax.js
-https://github.com/silvestreh/onScreen
-
-jquery hover 效果
-https://github.com/gijsroge/tilt.js
-
-slider
-https://github.com/glidejs/glide
-https://refreshless.com/nouislider/
-
-popup
-https://github.com/sweetalert2/sweetalert2
-https://github.com/popperjs/popper-core
-
-progress bar
-https://github.com/CodeByZach/pace
-
-notifications
-https://carlosroso.com/notyf/
-
-树组件
-http://wwwendt.de/tech/fancytree/demo/
-
-滚动条
-http://grsmto.github.io/simplebar/
-
-布局+筛选+排序
-https://isotope.metafizzy.co/
-
-select
-https://choices-js.github.io/Choices/
-https://select2.org
-
-数字处理
-https://mathjs.org/index.html
-http://numeraljs.com/
-
-校验
-https://github.com/yiminghe/async-validator
-
-生成图片
-https://html2canvas.hertzen.com/
-https://github.com/tsayen/dom-to-image
+<span class="hljs-keyword">var</span> jssDef = jss.<span class="hljs-property">default</span>
+<span class="hljs-keyword">var</span> jssPreDef = jssPresetDefault.<span class="hljs-property">default</span>
+<span class="hljs-keyword">var</span> myjss = jssDef.<span class="hljs-title function_">setup</span>(<span class="hljs-title function_">jssPreDef</span>())
+<span class="hljs-comment">// Compile styles, apply plugins.</span>
+<span class="hljs-keyword">const</span> sheet = myjss.<span class="hljs-title function_">createStyleSheet</span>(style)
+sheet.<span class="hljs-title function_">attach</span>()
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sheet.<span class="hljs-title function_">toString</span>())
 </code></pre>
         </div>
         <div class="item">
@@ -385,6 +395,72 @@ cy.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27
 
 <span class="hljs-comment">// assert</span>
 cy.<span class="hljs-title function_">should</span>(<span class="hljs-string">&#x27;[assert]&#x27;</span>)
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="其他效果库">其他效果库</h3>
+          <p>html+css 效果</p>
+          <pre><code class="hljs language-text">背景视频
+https://github.com/rishabhp/bideo.js
+
+弹窗
+https://github.com/robinparisi/tingle
+
+
+输入框输入效果
+https://github.com/luisvinicius167/ityped
+
+时间
+https://github.com/flatpickr/flatpickr
+
+数字效果
+https://inorganik.github.io/countUp.js/
+
+滚动效果 动画
+https://github.com/michalsnik/aos
+https://github.com/alexfoxy/lax.js
+https://github.com/silvestreh/onScreen
+
+jquery hover 效果
+https://github.com/gijsroge/tilt.js
+
+slider
+https://github.com/glidejs/glide
+https://refreshless.com/nouislider/
+
+popup
+https://github.com/sweetalert2/sweetalert2
+https://github.com/popperjs/popper-core
+
+progress bar
+https://github.com/CodeByZach/pace
+
+notifications
+https://carlosroso.com/notyf/
+
+树组件
+http://wwwendt.de/tech/fancytree/demo/
+
+滚动条
+http://grsmto.github.io/simplebar/
+
+布局+筛选+排序
+https://isotope.metafizzy.co/
+
+select
+https://choices-js.github.io/Choices/
+https://select2.org
+
+数字处理
+https://mathjs.org/index.html
+http://numeraljs.com/
+
+校验
+https://github.com/yiminghe/async-validator
+
+生成图片
+https://html2canvas.hertzen.com/
+https://github.com/tsayen/dom-to-image
 </code></pre>
         </div>
       </div>

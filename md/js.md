@@ -6,72 +6,82 @@ intro: See MDN Web [Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 # 常用
 
-### 效果库
+### emotion
 
-html+css 效果
+see [doc](https://emotion.sh/docs/introduction)
 
-```text
-背景视频
-https://github.com/rishabhp/bideo.js
+```js
+// @emotion/css
+// cdn: https://cdn.jsdelivr.net/npm/@emotion/css@11.9.0/dist/emotion-css.umd.min.js
+const app = document.getElementById('root')
+const myClassName = emotion.css`
+    color: hotpink !important;
+`
+app.classList.add(myClassName)
+```
 
-弹窗
-https://github.com/robinparisi/tingle
+### jss
 
+see [doc](https://cssinjs.org)
 
-输入框输入效果
-https://github.com/luisvinicius167/ityped
+```js
+// jss
+// cdn: https://cdn.jsdelivr.net/npm/jss@10.9.0/dist/jss.min.js
+// jss-preset-default
+// cdn: https://cdn.jsdelivr.net/npm/jss-preset-default@10.9.0/dist/jss-preset-default.min.js
+var font = {
+  fontSize: 12,
+  lineHeight: 1,
+}
 
-时间
-https://github.com/flatpickr/flatpickr
+const style = {
+  button: {
+    extend: font,
+    border: 'none',
+    margin: [5, 10],
+    transition: ['background', 'color', 'font-size'],
+    transitionDuration: 300,
+    background: {
+      color: 'white',
+      image: 'url("/some/url/image.png")',
+      repeat: 'no-repeat',
+      position: 'contain',
+    },
+    '&:before': {
+      content: '"icon"',
+    },
+  },
+  redButton: {
+    extend: 'button',
+    background: 'linear-gradient(to right, red 0%, green 100%)',
+    fallbacks: {
+      background: 'red',
+    },
+    '&:hover': {
+      border: [[1, 'solid', 'blue']],
+      boxShadow: [
+        [0, 0, 0, 10, 'blue'],
+        [0, 0, 0, 15, 'green'],
+      ],
+      '& span': {
+        color: 'red',
+      },
+    },
+  },
+  '@media (min-width: 1024px)': {
+    button: {
+      fontSize: 16,
+    },
+  },
+}
 
-数字效果
-https://inorganik.github.io/countUp.js/
-
-滚动效果 动画
-https://github.com/michalsnik/aos
-https://github.com/alexfoxy/lax.js
-https://github.com/silvestreh/onScreen
-
-jquery hover 效果
-https://github.com/gijsroge/tilt.js
-
-slider
-https://github.com/glidejs/glide
-https://refreshless.com/nouislider/
-
-popup
-https://github.com/sweetalert2/sweetalert2
-https://github.com/popperjs/popper-core
-
-progress bar
-https://github.com/CodeByZach/pace
-
-notifications
-https://carlosroso.com/notyf/
-
-树组件
-http://wwwendt.de/tech/fancytree/demo/
-
-滚动条
-http://grsmto.github.io/simplebar/
-
-布局+筛选+排序
-https://isotope.metafizzy.co/
-
-select
-https://choices-js.github.io/Choices/
-https://select2.org
-
-数字处理
-https://mathjs.org/index.html
-http://numeraljs.com/
-
-校验
-https://github.com/yiminghe/async-validator
-
-生成图片
-https://html2canvas.hertzen.com/
-https://github.com/tsayen/dom-to-image
+var jssDef = jss.default
+var jssPreDef = jssPresetDefault.default
+var myjss = jssDef.setup(jssPreDef())
+// Compile styles, apply plugins.
+const sheet = myjss.createStyleSheet(style)
+sheet.attach()
+console.log(sheet.toString())
 ```
 
 ### 插入 js 内容
@@ -258,4 +268,72 @@ cy.get('[selector]')
 
 // assert
 cy.should('[assert]')
+```
+
+### 其他效果库
+
+html+css 效果
+
+```text
+背景视频
+https://github.com/rishabhp/bideo.js
+
+弹窗
+https://github.com/robinparisi/tingle
+
+
+输入框输入效果
+https://github.com/luisvinicius167/ityped
+
+时间
+https://github.com/flatpickr/flatpickr
+
+数字效果
+https://inorganik.github.io/countUp.js/
+
+滚动效果 动画
+https://github.com/michalsnik/aos
+https://github.com/alexfoxy/lax.js
+https://github.com/silvestreh/onScreen
+
+jquery hover 效果
+https://github.com/gijsroge/tilt.js
+
+slider
+https://github.com/glidejs/glide
+https://refreshless.com/nouislider/
+
+popup
+https://github.com/sweetalert2/sweetalert2
+https://github.com/popperjs/popper-core
+
+progress bar
+https://github.com/CodeByZach/pace
+
+notifications
+https://carlosroso.com/notyf/
+
+树组件
+http://wwwendt.de/tech/fancytree/demo/
+
+滚动条
+http://grsmto.github.io/simplebar/
+
+布局+筛选+排序
+https://isotope.metafizzy.co/
+
+select
+https://choices-js.github.io/Choices/
+https://select2.org
+
+数字处理
+https://mathjs.org/index.html
+http://numeraljs.com/
+
+校验
+https://github.com/yiminghe/async-validator
+
+生成图片
+https://html2canvas.hertzen.com/
+https://github.com/tsayen/dom-to-image
 ```
