@@ -135,51 +135,49 @@ app.<span class="hljs-property">classList</span>.<span class="hljs-title functio
 <span class="hljs-comment">// jss-preset-default</span>
 <span class="hljs-comment">// cdn: https://cdn.jsdelivr.net/npm/jss-preset-default@10.9.0/dist/jss-preset-default.min.js</span>
 <span class="hljs-keyword">var</span> font = {
-    <span class="hljs-attr">fontSize</span>: <span class="hljs-number">12</span>,
-    <span class="hljs-attr">lineHeight</span>: <span class="hljs-number">1</span>
-};
+  <span class="hljs-attr">fontSize</span>: <span class="hljs-number">12</span>,
+  <span class="hljs-attr">lineHeight</span>: <span class="hljs-number">1</span>,
+}
 
 <span class="hljs-keyword">const</span> style = {
+  <span class="hljs-attr">button</span>: {
+    <span class="hljs-attr">extend</span>: font,
+    <span class="hljs-attr">border</span>: <span class="hljs-string">&#x27;none&#x27;</span>,
+    <span class="hljs-attr">margin</span>: [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>],
+    <span class="hljs-attr">transition</span>: [<span class="hljs-string">&#x27;background&#x27;</span>, <span class="hljs-string">&#x27;color&#x27;</span>, <span class="hljs-string">&#x27;font-size&#x27;</span>],
+    <span class="hljs-attr">transitionDuration</span>: <span class="hljs-number">300</span>,
+    <span class="hljs-attr">background</span>: {
+      <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;white&#x27;</span>,
+      <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;url(&quot;/some/url/image.png&quot;)&#x27;</span>,
+      <span class="hljs-attr">repeat</span>: <span class="hljs-string">&#x27;no-repeat&#x27;</span>,
+      <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;contain&#x27;</span>,
+    },
+    <span class="hljs-string">&#x27;&amp;:before&#x27;</span>: {
+      <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;&quot;icon&quot;&#x27;</span>,
+    },
+  },
+  <span class="hljs-attr">redButton</span>: {
+    <span class="hljs-attr">extend</span>: <span class="hljs-string">&#x27;button&#x27;</span>,
+    <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;linear-gradient(to right, red 0%, green 100%)&#x27;</span>,
+    <span class="hljs-attr">fallbacks</span>: {
+      <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;red&#x27;</span>,
+    },
+    <span class="hljs-string">&#x27;&amp;:hover&#x27;</span>: {
+      <span class="hljs-attr">border</span>: [[<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;solid&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>]],
+      <span class="hljs-attr">boxShadow</span>: [
+        [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-string">&#x27;blue&#x27;</span>],
+        [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">15</span>, <span class="hljs-string">&#x27;green&#x27;</span>],
+      ],
+      <span class="hljs-string">&#x27;&amp; span&#x27;</span>: {
+        <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;red&#x27;</span>,
+      },
+    },
+  },
+  <span class="hljs-string">&#x27;@media (min-width: 1024px)&#x27;</span>: {
     <span class="hljs-attr">button</span>: {
-        <span class="hljs-attr">extend</span>: font,
-        <span class="hljs-attr">border</span>: <span class="hljs-string">&#x27;none&#x27;</span>,
-        <span class="hljs-attr">margin</span>: [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>],
-        <span class="hljs-attr">transition</span>: [<span class="hljs-string">&#x27;background&#x27;</span>, <span class="hljs-string">&#x27;color&#x27;</span>, <span class="hljs-string">&#x27;font-size&#x27;</span>],
-        <span class="hljs-attr">transitionDuration</span>: <span class="hljs-number">300</span>,
-        <span class="hljs-attr">background</span>: {
-            <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;white&#x27;</span>,
-            <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;url(&quot;/some/url/image.png&quot;)&#x27;</span>,
-            <span class="hljs-attr">repeat</span>: <span class="hljs-string">&#x27;no-repeat&#x27;</span>,
-            <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;contain&#x27;</span>
-        },
-        <span class="hljs-string">&#x27;&amp;:before&#x27;</span>: {
-            <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;&quot;icon&quot;&#x27;</span>
-        }
+      <span class="hljs-attr">fontSize</span>: <span class="hljs-number">16</span>,
     },
-    <span class="hljs-attr">redButton</span>: {
-        <span class="hljs-attr">extend</span>: <span class="hljs-string">&#x27;button&#x27;</span>,
-        <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;linear-gradient(to right, red 0%, green 100%)&#x27;</span>,
-        <span class="hljs-attr">fallbacks</span>: {
-            <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;red&#x27;</span>
-        },
-        <span class="hljs-string">&#x27;&amp;:hover&#x27;</span>: {
-            <span class="hljs-attr">border</span>: [
-                [<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;solid&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>]
-            ],
-            <span class="hljs-attr">boxShadow</span>: [
-                [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-string">&#x27;blue&#x27;</span>],
-                [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">15</span>, <span class="hljs-string">&#x27;green&#x27;</span>]
-            ],
-            <span class="hljs-string">&#x27;&amp; span&#x27;</span>: {
-                <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;red&#x27;</span>
-            }
-        }
-    },
-    <span class="hljs-string">&#x27;@media (min-width: 1024px)&#x27;</span>: {
-        <span class="hljs-attr">button</span>: {
-            <span class="hljs-attr">fontSize</span>: <span class="hljs-number">16</span>
-        }
-    }
+  },
 }
 
 <span class="hljs-keyword">var</span> jssDef = jss.<span class="hljs-property">default</span>
