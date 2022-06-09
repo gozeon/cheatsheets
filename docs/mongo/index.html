@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="DB" />
+    <meta
+      name="description"
+      content="See [Docs](https://www.mongodb.com/)常用命令版本索引创建索引查看索引删除索引去重删除重复数据以重复为例参考链接剔除第一个删除其余的"
+    />
+    <title>Mongo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad()
+    </script>
+    <style>
+      body {
+        background-color: #f1f3f5;
+        color: #345;
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen,
+          ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+      }
+
+      .hljs {
+        background-color: #ffffff;
+      }
+
+      .container {
+        width: 60vw;
+        margin: 0 auto;
+      }
+      pre {
+        max-width: 60vw;
+      }
+
+      header {
+        height: 10vh;
+        line-height: 10vh;
+      }
+
+      header a {
+        text-decoration: none;
+        padding: 0.3vw 0.5vw;
+        border: 1px #89a solid;
+        border-radius: 0.2vw;
+        color: #89a;
+      }
+
+      header a:hover {
+        background-color: #ffffff;
+        border-color: #345;
+        color: #345;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        color: #745fb5;
+        white-space: nowrap;
+      }
+
+      h3::after {
+        margin-left: 24px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          rgba(116, 95, 181, 0.2),
+          transparent 80%
+        );
+      }
+
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1vh;
+      }
+
+      .item {
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <a href="javascript:history.back()">Go Back</a>
+      </header>
+
+      <h1>Mongo</h1>
+      <p>See <a href="https://www.mongodb.com/">Docs</a></p>
+      <h1 id="常用命令">常用命令</h1>
+      <div class="box">
+        <div class="item">
+          <h3 id="版本">版本</h3>
+          <pre><code class="hljs language-bash">db.version()
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="索引">索引</h3>
+          <pre><code class="hljs language-bash"><span class="hljs-comment"># 创建索引</span>
+db.foods.ensureIndex({name:1,  healthy:1})
+
+<span class="hljs-comment"># 查看索引</span>
+db.foods.getIndexes()
+
+<span class="hljs-comment"># 删除索引</span>
+db.foods.dropIndexes()
+</code></pre>
+        </div>
+        <div class="item">
+          <h3 id="去重">去重</h3>
+          <p>
+            删除重复数据(document)，以name、healthy重复为例，参考<a
+              href="https://stackoverflow.com/questions/14184099/fastest-way-to-remove-duplicate-documents-in-mongodb"
+              >链接</a
+            >
+          </p>
+          <pre><code class="hljs language-bash"><span class="hljs-comment"># version 3.4.24</span>
+db.foods.aggregate([
+    {
+        <span class="hljs-variable">$group</span>: {
+            _id: {
+                name: <span class="hljs-string">&quot;<span class="hljs-variable">$name</span>&quot;</span>,
+                health: <span class="hljs-string">&quot;<span class="hljs-variable">$healthy</span>&quot;</span>
+            },
+            count: {
+                <span class="hljs-variable">$sum</span>: 1
+            },
+            dups:{
+                <span class="hljs-variable">$addToSet</span>: <span class="hljs-string">&#x27;$_id&#x27;</span>
+            }
+        }
+    },
+    {
+        <span class="hljs-variable">$match</span>: {
+            count: {
+                <span class="hljs-variable">$gt</span>: 1
+            }
+        }
+    }
+]).forEach(<span class="hljs-keyword">function</span>(it) {
+    // 剔除第一个
+    it.dups.shift()
+
+    // 删除其余的
+    // db.foods.remove({_id: {<span class="hljs-variable">$in</span>: it.dups}});
+    db.foods.deleteMany({_id: {<span class="hljs-variable">$in</span>: it.dups}})
+})
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

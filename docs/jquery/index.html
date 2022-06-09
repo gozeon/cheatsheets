@@ -150,50 +150,50 @@
       <div class="box">
         <div class="item">
           <h3 id="基本使用">基本使用</h3>
-          <pre><code class="hljs language-js">$.<span class="hljs-title function_">when</span>( $.<span class="hljs-title function_">ajax</span>( <span class="hljs-string">&quot;test.aspx&quot;</span> ) ).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"> data, textStatus, jqXHR </span>) {
-  <span class="hljs-title function_">alert</span>( jqXHR.<span class="hljs-property">status</span> ); <span class="hljs-comment">// Alerts 200</span>
-});
+          <pre><code class="hljs language-js">$.<span class="hljs-title function_">when</span>($.<span class="hljs-title function_">ajax</span>(<span class="hljs-string">&#x27;test.aspx&#x27;</span>)).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">data, textStatus, jqXHR</span>) {
+  <span class="hljs-title function_">alert</span>(jqXHR.<span class="hljs-property">status</span>) <span class="hljs-comment">// Alerts 200</span>
+})
 </code></pre>
         </div>
         <div class="item">
           <h3 id="组合使用">组合使用</h3>
-          <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> d1 = $.<span class="hljs-title class_">Deferred</span>();
-<span class="hljs-keyword">var</span> d2 = $.<span class="hljs-title class_">Deferred</span>();
- 
-$.<span class="hljs-title function_">when</span>( d1, d2 ).<span class="hljs-title function_">done</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"> v1, v2 </span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( v1 ); <span class="hljs-comment">// &quot;Fish&quot;</span>
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( v2 ); <span class="hljs-comment">// &quot;Pizza&quot;</span>
-});
- 
-d1.<span class="hljs-title function_">resolve</span>( <span class="hljs-string">&quot;Fish&quot;</span> );
-d2.<span class="hljs-title function_">resolve</span>( <span class="hljs-string">&quot;Pizza&quot;</span> );
+          <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> d1 = $.<span class="hljs-title class_">Deferred</span>()
+<span class="hljs-keyword">var</span> d2 = $.<span class="hljs-title class_">Deferred</span>()
+
+$.<span class="hljs-title function_">when</span>(d1, d2).<span class="hljs-title function_">done</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">v1, v2</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(v1) <span class="hljs-comment">// &quot;Fish&quot;</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(v2) <span class="hljs-comment">// &quot;Pizza&quot;</span>
+})
+
+d1.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;Fish&#x27;</span>)
+d2.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;Pizza&#x27;</span>)
 </code></pre>
         </div>
         <div class="item">
           <h3 id="请求">请求</h3>
           <pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getData</span>(<span class="hljs-params"></span>) {
-  <span class="hljs-keyword">var</span> deferred = $.<span class="hljs-title class_">Deferred</span>();
+  <span class="hljs-keyword">var</span> deferred = $.<span class="hljs-title class_">Deferred</span>()
 
   $.<span class="hljs-title function_">ajax</span>({
-      <span class="hljs-string">&#x27;url&#x27;</span>: <span class="hljs-string">&#x27;http://google.com&#x27;</span>,
-      <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {
-          deferred.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;yay&#x27;</span>);
-      },
-      <span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) {
-          deferred.<span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;boo&#x27;</span>);
-      }
-  });
+    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://google.com&#x27;</span>,
+    <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) {
+      deferred.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;yay&#x27;</span>)
+    },
+    <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) {
+      deferred.<span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;boo&#x27;</span>)
+    },
+  })
 
-  <span class="hljs-keyword">return</span> deferred.<span class="hljs-title function_">promise</span>();
+  <span class="hljs-keyword">return</span> deferred.<span class="hljs-title function_">promise</span>()
 }
 
-$.<span class="hljs-title function_">when</span>(<span class="hljs-title function_">getData</span>()).<span class="hljs-title function_">done</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) {
-  <span class="hljs-title function_">alert</span>(value);
-});
+$.<span class="hljs-title function_">when</span>(<span class="hljs-title function_">getData</span>()).<span class="hljs-title function_">done</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) {
+  <span class="hljs-title function_">alert</span>(value)
+})
 
-<span class="hljs-title function_">getData</span>().<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) {
-  <span class="hljs-title function_">alert</span>(value);
-});
+<span class="hljs-title function_">getData</span>().<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) {
+  <span class="hljs-title function_">alert</span>(value)
+})
 </code></pre>
         </div>
       </div>
