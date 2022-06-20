@@ -20,12 +20,15 @@ theme:
         name: Switch to light mode
 
 markdown_extensions:
-  # - pymdownx.caret
-  # - pymdownx.betterem
-  # - pymdownx.mark
-  # - pymdownx.tilde
-  # - pymdownx.critic
-  # - pymdownx.snippets
-  # - pymdownx.highlight:
-  #     anchor_linenums: true
+  - pymdownx.caret
+  - pymdownx.betterem
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.snippets
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.superfences
+  - attr_list
+  - md_in_html
+
