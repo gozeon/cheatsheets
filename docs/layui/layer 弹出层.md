@@ -10,4 +10,11 @@ layer.open({
 
 // 图标
 layer.msg('不开心。。', {icon: 5});
+
+// 询问
+layer.confirm('is not?', function(index){
+  //do something
+  
+  layer.close(index);
+});  
 ```
