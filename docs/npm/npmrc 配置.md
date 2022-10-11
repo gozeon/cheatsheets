@@ -1,15 +1,17 @@
 ## 国内
 
+更换公告  https://zhuanlan.zhihu.com/p/465424728
+
 ```txt title=".npmrc"
-registry=https://registry.npm.taobao.org/
-disturl=https://npm.taobao.org/dist
-sharp_dist_base_url=https://npm.taobao.org/mirrors/sharp-libvips/
-sass_binary_site=https://npm.taobao.org/mirrors/node-sass
-electron_mirror=https://npm.taobao.org/mirrors/electron/
-puppeteer_download_host=https://npm.taobao.org/mirrors
-chromedriver_cdnurl=https://npm.taobao.org/mirrors/chromedriver
-operadriver_cdnurl=https://npm.taobao.org/mirrors/operadriver
-phantomjs_cdnurl=https://npm.taobao.org/mirrors/phantomjs
-selenium_cdnurl=https://npm.taobao.org/mirrors/selenium
-node_inspector_cdnurl=https://npm.taobao.org/mirrors/node-inspector
+registry=https://registry.npmmirror.com/
+disturl=https://npmmirror.com/dist
+sharp_dist_base_url=https://npmmirror.com/mirrors/sharp-libvips/
+sass_binary_site=https://npmmirror.com/mirrors/node-sass/
+electron_mirror=https://npmmirror.com/mirrors/electron/
+chromedriver_cdnurl=https://npmmirror.com/mirrors/chromedriver/
+operadriver_cdnurl=https://npmmirror.com/mirrors/operadriver/
+phantomjs_cdnurl=https://npmmirror.com/mirrors/phantomjs/
+selenium_cdnurl=https://npmmirror.com/mirrors/selenium/
+node_inspector_cdnurl=https://npmmirror.com/mirrors/node-inspector/
+puppeteer_download_host=https://npmmirror.com/mirrors/
 ```
