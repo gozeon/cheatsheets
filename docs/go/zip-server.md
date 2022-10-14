@@ -2,6 +2,7 @@
 
 上传zip文件，解压出静态目录
 
+> zip 出现中文乱码使用 `unzip -O GBK xx.zip`
 
 ```go title="main.go"
 package main
