@@ -9,6 +9,7 @@ package main
 
 import (
 	"archive/zip"
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -18,9 +19,12 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"golang.org/x/text/encoding/simplifiedchinese"
+	"golang.org/x/text/transform"
 )
 
 var index = `
@@ -54,6 +58,15 @@ func makeSureFolder(path string) {
 	}
 }
 
+func GbkToUtf8(s []byte) ([]byte, error) {
+	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewDecoder())
+	d, e := ioutil.ReadAll(reader)
+	if e != nil {
+		return nil, e
+	}
+	return d, nil
+}
+
 // https://golang.cafe/blog/golang-unzip-file-example.html
 func unZip(dst, src string) (err error) {
 	archive, err := zip.OpenReader(src)
@@ -63,7 +76,15 @@ func unZip(dst, src string) (err error) {
 	defer archive.Close()
 
 	for _, f := range archive.File {
-		filePath := filepath.Join(dst, f.Name)
+
+		fmt.Println(utf8.Valid([]byte(f.Name)))
+		fname := f.Name
+		// 转GBK
+		if utf8.Valid([]byte(fname)) != true {
+			fname, _ = simplifiedchinese.GBK.NewDecoder().String(f.Name)
+			//fname, _, _ := transform.String(simplifiedchinese.GBK.NewDecoder(), f.Name)
+		}
+		filePath := filepath.Join(dst, fname)
 		fmt.Println("unzipping file ", filePath)
 
 		if !strings.HasPrefix(filePath, filepath.Clean(dst)+string(os.PathSeparator)) {
@@ -101,7 +122,6 @@ func unZip(dst, src string) (err error) {
 }
 
 func main() {
-	os.Setenv("LANG", "GBK")
 	makeSureFolder("public")
 	app := fiber.New(fiber.Config{
 		BodyLimit: 10 * 1024 * 1024,
@@ -147,7 +167,6 @@ func main() {
 		if err != nil {
 			return err
 		}
-
 		err = unZip("./public", filename)
 		if err != nil {
 			return err
@@ -159,5 +178,6 @@ func main() {
 	// Start server
 	log.Fatal(app.Listen(":8989"))
 }
+
 
 ```
