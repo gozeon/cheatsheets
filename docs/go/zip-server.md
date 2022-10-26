@@ -9,7 +9,6 @@ package main
 
 import (
 	"archive/zip"
-	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -24,7 +23,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"golang.org/x/text/encoding/simplifiedchinese"
-	"golang.org/x/text/transform"
 )
 
 var index = `
@@ -56,15 +54,6 @@ func makeSureFolder(path string) {
 			log.Fatal(err)
 		}
 	}
-}
-
-func GbkToUtf8(s []byte) ([]byte, error) {
-	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewDecoder())
-	d, e := ioutil.ReadAll(reader)
-	if e != nil {
-		return nil, e
-	}
-	return d, nil
 }
 
 // https://golang.cafe/blog/golang-unzip-file-example.html
