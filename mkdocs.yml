@@ -6,6 +6,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
+    - content.code.copy
   palette: 
     # Palette toggle for light mode
     - scheme: default
