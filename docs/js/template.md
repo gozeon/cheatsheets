@@ -112,6 +112,8 @@ results.innerHTML = tmpl("item_tmpl", dataObject);
 
 ## 动态字符串模板
 
+https://stackoverflow.com/questions/30003353/can-es6-template-literals-be-substituted-at-runtime-or-reused
+
 ```js
 let inject = (str, obj) => str.replace(/\${(.*?)}/g, (x,g)=> obj[g]);
 
