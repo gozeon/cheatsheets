@@ -1,4 +1,5 @@
 
+## html 模板
 
 https://johnresig.com/blog/javascript-micro-templating/
 
@@ -66,7 +67,7 @@ var results = document.getElementById("results");
 results.innerHTML = tmpl("item_tmpl", dataObject);
 ```
 
-自定义标签
+### 自定义标签
 
 ```js title="tmpl1.js"
 // Simple JavaScript Templating
@@ -107,4 +108,27 @@ results.innerHTML = tmpl("item_tmpl", dataObject);
     return data ? fn( data ) : fn;
   };
 })();
+```
+
+## 动态字符串模板
+
+```js
+let inject = (str, obj) => str.replace(/\${(.*?)}/g, (x,g)=> obj[g]);
+
+// example
+/*
+
+// parameters in object
+let t1 = 'My name is ${name}, I am ${age}. My brother name is also ${name}.';
+let r1 = inject(t1, {name: 'JOHN',age: 23} );
+console.log("OBJECT:", r1); 
+OBJECT: My name is JOHN, I am 23. My brother name is also JOHN.
+*/
+
+// parameters in array
+let t2 = "Values ${0} are in ${2} array with ${1} values of ${0}."
+let r2 = inject(t2, ['A,B,C', 666, 'BIG'] );
+console.log("ARRAY :", r2);
+ARRAY : Values A,B,C are in BIG array with 666 values of A,B,C.
+
 ```
