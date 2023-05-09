@@ -7,6 +7,7 @@ theme:
     - navigation.tabs
     - navigation.top
     - content.code.copy
+    - navigation.footer
   palette: 
     # Palette toggle for light mode
     - scheme: default
@@ -19,6 +20,14 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gozeon
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/gozeonl
 
 markdown_extensions:
   - pymdownx.caret
