@@ -4,7 +4,7 @@
 
 ## base.py
 
-```title=base.py
+```python title=base.py
 from tkinter import *
 from tkinter import ttk
 
@@ -27,7 +27,7 @@ root.mainloop()
 
 ## button.py
 
-```title=button.py
+```python title=button.py
 from tkinter import *
 from tkinter import ttk
 
@@ -81,7 +81,7 @@ root.mainloop()
 
 ## demo.py
 
-```title=demo.py
+```python title=demo.py
 from tkinter import *
 from tkinter import ttk
 
@@ -125,7 +125,7 @@ root.mainloop()
 
 ## frame-demo.py
 
-```title=frame-demo.py
+```python title=frame-demo.py
 from tkinter import *
 from tkinter import ttk
 
@@ -176,7 +176,7 @@ root.mainloop()
 
 ## frame-in-frame.py
 
-```title=frame-in-frame.py
+```python title=frame-in-frame.py
 from tkinter import *
 from tkinter import ttk
 
@@ -201,7 +201,7 @@ root.mainloop()
 
 ## frame.py
 
-```title=frame.py
+```python title=frame.py
 from tkinter import *
 from tkinter import ttk
 
@@ -221,7 +221,7 @@ root.mainloop()
 
 ## grid-demo.py
 
-```title=grid-demo.py
+```python title=grid-demo.py
 from tkinter import *
 from tkinter import ttk
 
@@ -289,7 +289,7 @@ root.mainloop()
 
 ## grid.py
 
-```title=grid.py
+```python title=grid.py
 from tkinter import *
 from tkinter import ttk
 
@@ -337,7 +337,7 @@ root.mainloop()
 
 ## login.py
 
-```title=login.py
+```python title=login.py
 from tkinter import *
 from tkinter import ttk
 
@@ -423,7 +423,7 @@ root.mainloop()
 
 ## messageBox.py
 
-```title=messageBox.py
+```python title=messageBox.py
 from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showerror, showwarning, showinfo
