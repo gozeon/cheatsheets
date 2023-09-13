@@ -1,5 +1,6 @@
 ## hybrid 简单例子
 
+动态全局函数
 
 ```js
 function hybrid({ actionName, params, callback }) {
@@ -14,15 +15,15 @@ function hybrid({ actionName, params, callback }) {
     url.searchParams.set(k, params[k])
   }
 
-  window[`action_callback_${Math.random().toString(36).slice(-5)}`] = function () {
-    callback(...arguments)
+  const funcName = `action_callback_${Math.random().toString(36).slice(-5)}`
+  window[funcName] = function () {
+    callback && callback(...arguments)
   }
 
   url.searchParams.set('action', actionName)
-  url.searchParams.set('callback', callback)
+  url.searchParams.set('callback', funcName)
 
   iframe.style.display = 'none'
   document.appendChild(iframe)
 }
-
 ```
