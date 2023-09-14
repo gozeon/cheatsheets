@@ -44,9 +44,6 @@ class Hybrid {
    * @param actionMap map
    */
   constructor(protocol, hostname, pathname, actionMap) {
-    this.protocol = confg.protocol
-    this.protocol = confg.protocol
-
     this.url = new URL("http://example.com")
     this.url.protocol = protocol
     this.url.hostname = hostname
@@ -98,9 +95,6 @@ class Hybrid {
    * @param actionMap map
    */
   constructor(protocol, hostname, pathname, actionMap) {
-    this.protocol = confg.protocol
-    this.protocol = confg.protocol
-
     this.url = new URL("http://example.com")
     this.url.protocol = protocol
     this.url.hostname = hostname
