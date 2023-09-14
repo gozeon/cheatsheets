@@ -24,8 +24,8 @@ function hybrid({ actionName, params, callback }) {
   url.searchParams.set('callback', funcName)
 
   iframe.style.display = 'none'
-  iframe.url = url.href
-  document.appendChild(iframe)
+  iframe.src = url.href
+  document.body.appendChild(iframe)
 }
 ```
 
