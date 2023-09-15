@@ -138,3 +138,9 @@ class Hybrid {
 
 
 ```
+
+## h5 唤起 app
+
+- https://www.npmjs.com/package/web-launch-app
+- https://www.npmjs.com/package/web-open-app
+- https://github.com/AlanZhang001/H5CallUpNative
