@@ -9,7 +9,9 @@
 
 [language-reactor](https://chrome.google.com/webstore/detail/language-reactor/hoombieeljmmljlkjmnheibnpciblicm  )
 
+## 翻译
 
+[immersive-translate](https://github.com/immersive-translate/immersive-translate)
 
 ## proxy
 
