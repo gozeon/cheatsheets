@@ -1,4 +1,4 @@
   
 [![Language selector preview]][Language selector preview]
-  [Language selector preview]: ../assets/images/flow.png
+  [Language selector preview]: ../../assets/images/flow.png
 
