@@ -27,7 +27,7 @@ local plugins = {
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "lua", "go", "python", "bash", "erlang", "markdown" },
+				ensure_installed = { "vimdoc", "lua", "go", "python", "bash", "erlang", "markdown" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true }
