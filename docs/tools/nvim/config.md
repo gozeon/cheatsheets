@@ -55,6 +55,36 @@ local plugins = {
 	{
 		"lewis6991/gitsigns.nvim"
 	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			'nvim-tree/nvim-web-devicons'
+		}
+	},
+	{
+		"williamboman/mason.nvim"
+	},
+	{
+		"williamboman/mason-lspconfig.nvim"
+	},
+	{
+		"VonHeikemen/lsp-zero.nvim", 
+		branch = 'v3.x', 
+		lazy = true,
+		config = false
+	},
+	{
+		'neovim/nvim-lspconfig',
+		dependencies = {
+			{ 'hrsh7th/cmp-nvim-lsp' }
+		}
+	},
+	{
+		'hrsh7th/nvim-cmp',
+		dependencies = {
+			{ 'L3MON4D3/LuaSnip' }
+		}
+	}
 }
 
 local opts = {}
@@ -78,6 +108,27 @@ require("nvim-autopairs").setup()
 
 -- gitsigns
 require("gitsigns").setup()
+
+-- lualine
+require("lualine").setup()
+
+-- lsp
+local lsp_zero = require("lsp-zero")
+lsp_zero.on_attach(function(client, bufnr)
+	lsp_zero.default_keymaps({ buffer = bufnr })
+end)
+
+require("mason").setup({})
+require("mason-lspconfig").setup({
+	handlers = {
+		lsp_zero.default_setup
+	}
+})
+
+require("cmp").setup({})
+
+
+	
 
 ```
 
