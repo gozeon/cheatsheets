@@ -1,6 +1,8 @@
 
 ## 配置
 
+see https://github.com/nvim-lua/kickstart.nvim
+
 ```lua title="~/.config/nvim/init.lua"
 vim.cmd("set number")
 
