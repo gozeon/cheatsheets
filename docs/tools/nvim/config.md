@@ -1,3 +1,6 @@
+## 快速使用
+
+https://github.com/LazyVim/LazyVim
 
 ## 配置
 
