@@ -2,6 +2,34 @@
 
 参考教学[网站](https://www.pythonguis.com/tutorials), [视频](https://www.youtube.com/watch?v=mop6g-c5HEY)
 
+## 居中显示
+
+```python title="center.py"
+from tkinter import *
+from tkinter import ttk
+
+window_width = 300
+window_height = 150
+# create the root window
+root = Tk()
+root.title("Tkinter MessageBox")
+root.resizable(False, False)
+
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+
+x_cordinate = int((screen_width / 2) - (window_width / 2))
+y_cordinate = int((screen_height / 2) - (window_height / 2))
+
+root.geometry(
+    "{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate)
+)
+
+# run the app
+root.mainloop()
+
+```
+
 ## base.py
 
 ```python title="base.py"
