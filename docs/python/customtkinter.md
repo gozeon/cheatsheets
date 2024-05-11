@@ -8,6 +8,8 @@ import os
 import pathlib
 import re
 import socket
+import sys
+import threading
 import time
 import tkinter.messagebox
 import urllib
@@ -19,7 +21,6 @@ import customtkinter
 
 timeout = 5
 socket.setdefaulttimeout(timeout)
-
 
 class Crawler:
     # 睡眠时长
@@ -89,20 +90,19 @@ class Crawler:
                 filepath = os.path.join(self.__out, './%s/%s' % (word, str(self.__counter) + str(suffix)))
                 urllib.request.urlretrieve(url, filepath)
                 if os.path.getsize(filepath) < 5:
-                    self.__ui.toplevel_window.log("下载到了空文件，跳过!")
+                    self.__ui.update_log("下载到了空文件，跳过!")
                     os.unlink(filepath)
                     continue
             except urllib.error.HTTPError as urllib_err:
-                self.__ui.toplevel_window.log(urllib_err)
+                self.__ui.update_log(urllib_err)
                 continue
             except Exception as err:
                 time.sleep(1)
-                self.__ui.toplevel_window.log(err)
-                self.__ui.toplevel_window.log("产生未知错误，放弃保存")
+                self.__ui.update_log(err)
+                self.__ui.update_log("产生未知错误，放弃保存")
                 continue
             else:
-                print(self.__ui.toplevel_window)
-                self.__ui.toplevel_window.log("小黄图+1,已有" + str(self.__counter) + "张小黄图")
+                self.__ui.update_log("图片+1,已有" + str(self.__counter) + "张图片")
                 self.__counter += 1
         return
 
@@ -124,25 +124,27 @@ class Crawler:
                 rsp = page.read()
                 page.close()
             except UnicodeDecodeError as e:
-                self.__ui.toplevel_window.log(e)
-                self.__ui.toplevel_window.log('-----UnicodeDecodeErrorurl:', url)
+                self.__ui.update_log(e)
+                self.__ui.update_log('-----UnicodeDecodeErrorurl:', url)
             except urllib.error.URLError as e:
-                self.__ui.toplevel_window.log(e)
-                self.__ui.toplevel_window.log("-----urlErrorurl:", url)
+                self.__ui.update_log(e)
+                self.__ui.update_log("-----urlErrorurl:", url)
             except socket.timeout as e:
-                self.__ui.toplevel_window.log(e)
-                self.__ui.toplevel_window.log("-----socket timout:", url)
+                self.__ui.update_log(e)
+                self.__ui.update_log("-----socket timout:", url)
             else:
                 # 解析json
                 rsp_data = json.loads(rsp, strict=False)
                 if 'data' not in rsp_data:
-                    self.__ui.toplevel_window.log("触发了反爬机制，自动重试！")
+                    self.__ui.update_log("触发了反爬机制，自动重试！")
                 else:
                     self.save_image(rsp_data, word)
                     # 读取下一页
-                    self.__ui.toplevel_window.log("下载下一页")
+                    self.__ui.update_log("下载下一页")
                     pn += self.__per_page
-        self.__ui.toplevel_window.log("下载任务结束")
+        self.__ui.update_log("下载任务结束")
+        out_folder = os.path.join(self.__out, word)
+        os.startfile(out_folder)
 
         return
 
@@ -160,7 +162,6 @@ class Crawler:
         self.__amount = total_page * self.__per_page + self.__start_amount
         self.__out = out
         self.__ui = ui
-
         self.get_images(word)
 
 
@@ -198,6 +199,7 @@ class ConfigFrame(customtkinter.CTkFrame):
         self.folderEntry.grid(row=3, column=1, columnspan=3, padx=20, pady=20, sticky="ew")
         self.folderButton = customtkinter.CTkButton(self, text="选择", command=self.choose_folder)
         self.folderButton.grid(row=3, column=4, padx=20, pady=20, sticky="ew")
+        self.folderEntry.bind('<Button-1>', lambda _: os.startfile(self.folderEntry.get()))
 
         self.set_default()
 
@@ -236,37 +238,20 @@ class ConfigFrame(customtkinter.CTkFrame):
         }
 
 
-class ToplevelWindow(customtkinter.CTkToplevel):
-    def __init__(self, master, config):
-        super().__init__(master)
-        self.geometry("400x300")
-        self.lift()  # lift window on top
-        self.attributes("-topmost", True)  # stay on top
-        # self.grab_set()  # make other windows not clickable
-
-        self.label = customtkinter.CTkLabel(self, text="运行中请不要关闭!!!")
-        self.label.pack()
-
-        self.textbox = customtkinter.CTkTextbox(self, width=300)
-        self.textbox.pack()
-
-    def log(self, msg):
-        self.textbox.configure(state=tkinter.NORMAL)
-        self.textbox.insert(tkinter.END, "\n" + msg)
-        self.textbox.configure(state=tkinter.DISABLED)
-        self.textbox.see(tkinter.END)
-
-
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
         self.title("图片下载")
-        self.set_position()
-        # self.set_position("center")
+        self.set_position("center")
+
+        self.T = None
+        self.is_doing = False
 
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
+
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         self.checkbox_frame = ConfigFrame(self)
         self.checkbox_frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
@@ -274,11 +259,26 @@ class App(customtkinter.CTk):
         self.button = customtkinter.CTkButton(self, text="下载", command=self.button_callback)
         self.button.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
 
+        self.log = customtkinter.CTkTextbox(self, state="disabled")
+        self.log.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+
         self.minsize(self.winfo_width(), self.winfo_height())
 
-        self.toplevel_window = None
+    def on_closing(self):
+        sys.exit()
+        self.destroy()
+
+
+    def doing(self):
+        config = self.checkbox_frame.get()
+        crawler = Crawler(0.05)
+        crawler.start(word=config["word"], total_page=config["page"], per_page=config["size"],
+                      out=config["output_folder"], ui=self)
 
     def button_callback(self):
+        if self.is_doing is True:
+            tkinter.messagebox.showwarning(title="警告", message="请等待当前任务结束！")
+            return
         config = self.checkbox_frame.get()
         if len(config["word"]) < 1:
             tkinter.messagebox.showerror(title="参数错误", message="请输入关键字")
@@ -287,21 +287,20 @@ class App(customtkinter.CTk):
             tkinter.messagebox.showerror(title="参数错误", message="请选择输入目录")
             return
 
-        if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
-            self.toplevel_window = ToplevelWindow(self, config=config)
-        else:
-            self.toplevel_window.focus()
-        self.toplevel_window.after(100, self.do)
+        self.T = threading.Thread(target=self.doing)
+        self.update_log("下载期间请不要关闭窗口!!!")
+        self.T.start()
+        self.is_doing = True
 
-    def do(self):
-        config = self.checkbox_frame.get()
-        crawler = Crawler(0.05)
-        crawler.start(word=config["word"], total_page=config["page"], per_page=config["size"],
-                      out=config["output_folder"], ui=self)
+    def update_log(self, msg):
+        self.log.configure(state=tkinter.NORMAL)
+        self.log.insert(tkinter.END, "\n" + str(msg))
+        self.log.configure(state=tkinter.DISABLED)
+        self.log.see(tkinter.END)
 
     def set_position(self, position=""):
         window_width = 600
-        window_height = 400
+        window_height = 600
 
         if position == "center":
             self.geometry(
