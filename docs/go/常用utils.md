@@ -5,6 +5,7 @@
 ### go v1.18以上
 
 - https://github.com/samber/lo
+- https://github.com/gookit
 
 ### go v1.18 以下
 
