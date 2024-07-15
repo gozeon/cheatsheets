@@ -11,7 +11,7 @@ func main() {
 }
 ```
 
-## zag
+## zap
 
 ```go title="log.go"
 package v7
