@@ -1,5 +1,7 @@
 ## 部署一个可执行文件
 
+https://github.com/ansistrano/deploy
+
 ```ini title="inventory.ini"
 [alpine]
 10.0.2.4
