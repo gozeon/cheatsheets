@@ -60,7 +60,13 @@ mysqlbinlog --stop-datetime="2025-01-09 10:00:00" /path/to/mysql-bin.000001 | my
 - https://cloud.tencent.com/developer/article/1922672
 - https://www.cnblogs.com/hld123/p/17115848.html
 
+# 工具集 
 
+- https://github.com/danfengcao/binlog2sql
+- https://github.com/LianjiaTech/lightning
+- https://github.com/alibaba/canal
+
+  
 # 思路
 
 - 把数据还原上一个状态，如一条数据被删除，不仅要找到insert时候的日志，还要找到后续的update。
