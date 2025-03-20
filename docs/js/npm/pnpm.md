@@ -4,6 +4,9 @@
 > 官方不建议这样做，但是针对老项目，不得不这样做
 
 ```bash
+# new
+pnpm install --shamefully-hoist
+# old
 pnpm install --shamefully-flatten
 ```
 
