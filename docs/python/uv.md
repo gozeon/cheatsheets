@@ -12,6 +12,8 @@ uv init example
 
 ### 添加依赖
 
+> 使用国内源 --index https://mirrors.cernet.edu.cn/pypi/web/simple
+
 ```
 uv add ruff
 ```
