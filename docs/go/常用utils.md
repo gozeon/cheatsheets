@@ -7,6 +7,7 @@
 - https://github.com/samber/lo
 - https://github.com/gookit
 - https://github.com/duke-git/lancet
+- https://github.com/tidwall/gjson
 
 ### go v1.18 以下
 
