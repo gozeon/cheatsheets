@@ -35,3 +35,9 @@ uv init --script example.py --python 3.12
 ```
 uv add --script example.py 'requests<3' 'rich'
 ```
+
+### docker镜像
+
+参考 [uvicorn 方式](https://www.uvicorn.org/deployment/docker/)
+
+
