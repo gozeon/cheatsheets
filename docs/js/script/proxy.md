@@ -46,3 +46,13 @@ app.use('/m3u8', createProxyMiddleware({
 
 app.listen(3000);
 ```
+
+
+## cors anywhere
+
+> 背景是一些m3u8资源跨域，浏览器使用插件对非开发人员太复杂了。
+
+```text
+http://localhost:8080/http://xx.xx.m3u8?q=a
+```
+参考项目 https://github.com/gozeon/cors-anywhere
