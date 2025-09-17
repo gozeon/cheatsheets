@@ -1,3 +1,13 @@
+
+## 设置k8s配置文件
+
+> helm、skaffold可以使用这一变量
+
+```
+# ~/.kube/config 是默认路径
+export KUBECONFIG=~/.kube/config
+```
+
 ## 集群信息
 
 ### 查看当前上下文
