@@ -15,16 +15,16 @@ interface MarqueeOption {
     el: HTMLElement
 }
 
-class Marquee {
+export class Marquee {
     private direction: Direction;
     private pauseOnHover: boolean = false;
 
-    private speed: number = 10;
+    private speed: number = 0;
     private x: number = 0;
     private y: number = 0;
     private el: HTMLElement;
     private wrapper!: HTMLElement;
-    private itemWidth:number = 0
+    private itemWidth: number = 0
 
     private pause = false;
     private rafId: number | null = null
@@ -32,7 +32,7 @@ class Marquee {
 
         this.direction = option?.direction ?? Direction.Left;
 
-        this.speed = option.speed ?? 10
+        this.speed = option.speed ?? 2
 
         this.pauseOnHover = option.pauseOnHover ?? false
 
@@ -42,29 +42,28 @@ class Marquee {
     }
 
     private init() {
-// 1. Create the wrapper and move original children into it
-    this.wrapper = document.createElement('div');
-    this.wrapper.style.display = 'inline-flex'; // Keeps items in a row
-    this.wrapper.style.whiteSpace = 'nowrap';
-    
-    // 2. Clone content (2 times is usually enough for the loop)
-    const content = this.el.innerHTML;
-    this.wrapper.innerHTML = content + content; 
-    
-    // 3. Clear the original container and add the wrapper
-    this.el.innerHTML = '';
-    this.el.style.overflow = 'hidden'; // Ensure container clips the wrapper
-    this.el.appendChild(this.wrapper);
+        // 1. 此时 el 里面还是你原始的 HTML
+        // 设置 whiteSpace 确保内容不换行，否则 scrollWidth 测量不准
+        this.el.style.whiteSpace = 'nowrap';
+        this.el.style.display = 'block';
 
-    // 4. Calculate width of ONE set of content
-    // We use the first child's offsetWidth if it's a single unit, 
-    // or half of the wrapper's scrollWidth since we cloned it once.
-    this.itemWidth = this.wrapper.scrollWidth / 2;
+        // 2. 直接获取原始内容的真实滚动宽度
+        this.itemWidth = this.el.scrollWidth;
 
-    // 5. Initial position for Right direction
-    if (this.direction === Direction.Right) {
-        this.x = -this.itemWidth;
-    }
+        // 3. 现在再进行克隆和包裹逻辑
+        const content = this.el.innerHTML;
+
+        this.wrapper = document.createElement('div');
+        this.wrapper.style.display = 'inline-flex';
+        this.wrapper.innerHTML = content + content + content; // 克隆
+
+        this.el.innerHTML = '';
+        this.el.appendChild(this.wrapper);
+
+        // 4. 设置初始位置
+        if (this.direction === Direction.Right) {
+            this.x = -this.itemWidth;
+        }
 
         this.start();
 
