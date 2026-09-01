@@ -11,4 +11,6 @@ lsof -t -i:8080
 ## netstat
 ```bash
 netstat -anp | grep 8080
+
+netstat -tunlp | grep ":端口号"
 ```
